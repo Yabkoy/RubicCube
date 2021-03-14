@@ -1,4 +1,4 @@
-#include "../include/libs.h"
+#include "../include/SFMLVisualization.h"
 
 enum Colors : int
 {
@@ -276,8 +276,6 @@ class Camera
 
 int main()
 {	
-
-	sf::RectangleShape RS(sf::Vector2f(123, 123));
 
 	//LPrimDo(matrix1, matrix2, matrix3);
 	//LPrimDo(matrix1, matrix2, matrix3);

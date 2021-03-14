@@ -24,6 +24,7 @@
     <ProjectGuid>{ee032168-b44d-4431-93ff-a570a09c53cc}</ProjectGuid>
     <RootNamespace>RubicCubre</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>RubicCube</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -147,9 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\SFMLVisualization.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\libs.h" />
+    <ClInclude Include="include\SFMLVisualization.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
