@@ -276,21 +276,24 @@ class Camera
 
 int main()
 {	
-	LPrimDo(matrix1, matrix2, matrix3);
-	LPrimDo(matrix1, matrix2, matrix3);
-	LPrimDo(matrix1, matrix2, matrix3);
+
+	sf::RectangleShape RS(sf::Vector2f(123, 123));
+
+	//LPrimDo(matrix1, matrix2, matrix3);
+	//LPrimDo(matrix1, matrix2, matrix3);
+	//LPrimDo(matrix1, matrix2, matrix3);
 
 
 
-	std::cout << matrix1[2].b3 << std::endl;
-	std::cout << matrix2[2].b2 << std::endl;
-	std::cout << matrix3[2].b1 << std::endl;
-	std::cout << matrix1[5].b2 << std::endl;
-	std::cout << matrix2[5].b1 << std::endl;
-	std::cout << matrix3[5].b1 << std::endl;
-	std::cout << matrix1[8].b3 << std::endl;
-	std::cout << matrix2[8].b1 << std::endl;
-	std::cout << matrix3[8].b1 << std::endl;
+	//std::cout << matrix1[2].b3 << std::endl;
+	//std::cout << matrix2[2].b2 << std::endl;
+	//std::cout << matrix3[2].b1 << std::endl;
+	//std::cout << matrix1[5].b2 << std::endl;
+	//std::cout << matrix2[5].b1 << std::endl;
+	//std::cout << matrix3[5].b1 << std::endl;
+	//std::cout << matrix1[8].b3 << std::endl;
+	//std::cout << matrix2[8].b1 << std::endl;
+	//std::cout << matrix3[8].b1 << std::endl;
 
 
 	//std::cout << "\n\nMatrix 1: \n";
