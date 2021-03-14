@@ -1,5 +1,4 @@
-#include <iostream>
-#include <array>
+#include "../include/libs.h"
 
 enum Colors : int
 {
@@ -119,16 +118,35 @@ void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 		nowStatematrix3[i] = matrix3[i];
 	// ------------------------------------
 
-
-	matrix1[0].b2 = nowStatematrix1[6].b3;
-	matrix2[0].b1 = nowStatematrix1[3].b2;
-	matrix3[0].b2 = nowStatematrix1[0].b3;
-
 	matrix1[0].b3 = nowStatematrix1[6].b2;
 	matrix1[3].b2 = nowStatematrix2[6].b2;
 	matrix1[6].b3 = nowStatematrix3[6].b2;
+	
+	matrix1[0].b2 = nowStatematrix1[6].b3;
+	matrix2[0].b1 = nowStatematrix1[3].b2;
+	matrix3[0].b2 = nowStatematrix1[0].b3;
+	
+	matrix3[0].b1 = nowStatematrix1[0].b2;
+	matrix3[3].b1 = nowStatematrix2[0].b1;
+	matrix3[6].b1 = nowStatematrix3[0].b2;
 
+	matrix1[6].b2 = nowStatematrix3[0].b1;
+	matrix2[6].b2 = nowStatematrix3[3].b1;
+	matrix3[6].b2 = nowStatematrix3[6].b1;
 
+	// ===================================
+
+	matrix1[0].b1 = nowStatematrix1[6].b1;
+	matrix2[0].b2 = nowStatematrix1[3].b1;
+	matrix3[0].b3 = nowStatematrix1[0].b1;
+
+	matrix1[3].b1 = nowStatematrix2[6].b1;
+	matrix3[3].b2 = nowStatematrix2[0].b2;
+
+	matrix1[6].b1 = nowStatematrix3[6].b3;
+	matrix2[6].b1 = nowStatematrix3[3].b2;
+
+	matrix3[6].b3 = nowStatematrix3[0].b3;
 }
 
 
@@ -146,7 +164,10 @@ class Camera
 		Camera(const RubicMatrix* m1, const RubicMatrix* m2, const RubicMatrix* m3) : rm1(m1), rm2(m2), rm3(m3)
 		{
 			std::cout << "Camera Crated!\n";
-			
+
+
+
+			std::cout << "\n\nMATRIX2: \n";
 			std::cout << rm1[0].b2 << std::endl;
 			std::cout << rm1[1].b1 << std::endl;
 			std::cout << rm1[2].b2 << std::endl;
@@ -159,6 +180,7 @@ class Camera
 			std::cout << rm3[1].b1 << std::endl;
 			std::cout << rm3[2].b2 << std::endl;
 
+
 		}
 
 		std::array<RubicMatrix, 9> getBlockArray()
@@ -166,7 +188,7 @@ class Camera
 			std::array<RubicMatrix, 9> returnTypes;
 			switch (surfaceIndex)
 			{
-			case 0:
+			case 0: //DEF ORANGE
 			{
 				returnTypes[0] = rm1[0].b3;
 				returnTypes[1] = rm1[1].b2;
@@ -180,7 +202,7 @@ class Camera
 				returnTypes[7] = rm1[7].b1;
 				returnTypes[8] = rm1[8].b1;
 			}
-			case 1:
+			case 1: //DEF YELLOW
 			{
 				returnTypes[0] = rm1[0].b2;
 				returnTypes[1] = rm1[1].b1;
@@ -194,7 +216,58 @@ class Camera
 				returnTypes[7] = rm3[1].b1;
 				returnTypes[8] = rm3[2].b2;
 			}
-			default:
+			case 2: //DEF RED
+			{
+				returnTypes[0] = rm3[0].b1;
+				returnTypes[1] = rm3[1].b2;
+				returnTypes[2] = rm3[2].b3;
+										  
+				returnTypes[3] = rm3[3].b1;
+				returnTypes[4] = rm3[4].b1;
+				returnTypes[5] = rm3[5].b2;
+										  
+				returnTypes[6] = rm3[6].b1;
+				returnTypes[7] = rm3[7].b1;
+				returnTypes[8] = rm3[8].b3;
+			}
+			case 3: //DEF WHITE
+			{
+				returnTypes[0] = rm1[6].b2; 
+				returnTypes[1] = rm1[7].b2; 
+				returnTypes[2] = rm1[8].b2; 
+				returnTypes[3] = rm2[6].b2;
+				returnTypes[4] = rm2[7].b1;
+				returnTypes[5] = rm2[8].b2;
+				returnTypes[6] = rm3[6].b2;
+				returnTypes[7] = rm3[7].b2;
+				returnTypes[8] = rm3[8].b2;
+								  
+			}	
+			case 4:
+			{
+				returnTypes[0] = rm1[0].b1;
+				returnTypes[1] = rm2[3].b1;
+				returnTypes[2] = rm3[0].b3;
+				returnTypes[3] = rm1[3].b1;
+				returnTypes[4] = rm2[3].b1;
+				returnTypes[5] = rm3[3].b2;
+				returnTypes[6] = rm1[6].b1;
+				returnTypes[7] = rm2[6].b1;
+				returnTypes[8] = rm3[6].b3;
+			}
+			case 5:
+			{
+				returnTypes[0] = rm1[2].b3;
+				returnTypes[1] = rm2[2].b2;
+				returnTypes[2] = rm3[2].b1;
+				returnTypes[3] = rm1[5].b2;
+				returnTypes[4] = rm2[5].b1;
+				returnTypes[5] = rm3[5].b1;
+				returnTypes[6] = rm1[8].b3;
+				returnTypes[7] = rm2[8].b1;
+				returnTypes[8] = rm3[8].b1;
+			}
+			default:			  
 				break;
 			}
 		}
@@ -204,8 +277,21 @@ class Camera
 int main()
 {	
 	LPrimDo(matrix1, matrix2, matrix3);
+	LPrimDo(matrix1, matrix2, matrix3);
+	LPrimDo(matrix1, matrix2, matrix3);
 
-	//Camera c1(matrix1, matrix2, matrix3);
+
+
+	std::cout << matrix1[2].b3 << std::endl;
+	std::cout << matrix2[2].b2 << std::endl;
+	std::cout << matrix3[2].b1 << std::endl;
+	std::cout << matrix1[5].b2 << std::endl;
+	std::cout << matrix2[5].b1 << std::endl;
+	std::cout << matrix3[5].b1 << std::endl;
+	std::cout << matrix1[8].b3 << std::endl;
+	std::cout << matrix2[8].b1 << std::endl;
+	std::cout << matrix3[8].b1 << std::endl;
+
 
 	//std::cout << "\n\nMatrix 1: \n";
 	//for (int i = 0; i < 9; i++)
