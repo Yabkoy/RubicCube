@@ -1,12 +1,20 @@
 #include "../include/SFMLVisualization.h"
 
+void sfmlGrap::surfaceShape::draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const
+{
+	mainTarget.draw(testRS);
+}
+
+sfmlGrap::surfaceShape::surfaceShape()
+{
+	testRS.setSize(sf::Vector2f(100, 100));
+	testRS.setFillColor(sf::Color::Red);
+}
+
 
 sfmlGrap::mainSFMLVis::mainSFMLVis()
 {
 	RW = new sf::RenderWindow(sf::VideoMode(WINDOW_W, WINDOW_H, 32), "Rubic Cube");
-
-	RS.setSize(sf::Vector2f(100, 100));
-	RS.setFillColor(sf::Color::Red);
 
 	mainUpdateLoop();
 }
@@ -27,7 +35,7 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 
 		RW->clear(sf::Color::Black);
 
-		RW->draw(RS);
+		RW->draw(testSH);
 
 		RW->display();
 	}

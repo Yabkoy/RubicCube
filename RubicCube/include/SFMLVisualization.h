@@ -3,12 +3,23 @@
 
 namespace sfmlGrap
 {
+	class surfaceShape : public sf::Drawable
+	{
+	private:
+		sf::RectangleShape testRS;
+
+		virtual void draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const;
+	public:
+		surfaceShape();
+	};
+
+
 	class mainSFMLVis
 	{
 		private:
 			sf::RenderWindow* RW;
 			sf::Event mainEvent;
-			sf::RectangleShape RS;
+			surfaceShape testSH;
 
 			void mainUpdateLoop();
 		public:
