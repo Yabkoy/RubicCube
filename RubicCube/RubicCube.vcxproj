@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{ee032168-b44d-4431-93ff-a570a09c53cc}</ProjectGuid>
-    <RootNamespace>RubicCubre</RootNamespace>
+    <RootNamespace>RubicCube</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>RubicCube</ProjectName>
   </PropertyGroup>
