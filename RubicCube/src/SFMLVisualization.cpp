@@ -55,7 +55,7 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 	RW = new sf::RenderWindow(sf::VideoMode(WINDOW_W, WINDOW_H, 32), "Rubic Cube");
 
 	testShape.setEntryPointPosition(sf::Vector2f(200, 200));
-	testShape.initSurface();
+	//testShape.initSurface();
 
 	mainUpdateLoop();
 }

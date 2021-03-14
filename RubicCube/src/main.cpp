@@ -140,9 +140,9 @@ void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 }
 
 
-std::array<RubicMatrix, 9> getBlockArray(const int& surfaceIndex, const RubicMatrix* rm1, const RubicMatrix* rm2, const RubicMatrix* rm3)
+std::array<Colors, 9> getBlockArray(const int& surfaceIndex, const RubicMatrix* rm1, const RubicMatrix* rm2, const RubicMatrix* rm3)
 {
-	std::array<RubicMatrix, 9> returnTypes;
+	std::array<Colors, 9> returnTypes;
 	switch (surfaceIndex)
 	{
 	case 0: //DEF ORANGE
@@ -158,6 +158,7 @@ std::array<RubicMatrix, 9> getBlockArray(const int& surfaceIndex, const RubicMat
 		returnTypes[6] = rm1[6].b3;
 		returnTypes[7] = rm1[7].b1;
 		returnTypes[8] = rm1[8].b1;
+		break;
 	}
 	case 1: //DEF YELLOW
 	{
@@ -172,6 +173,7 @@ std::array<RubicMatrix, 9> getBlockArray(const int& surfaceIndex, const RubicMat
 		returnTypes[6] = rm3[0].b2;
 		returnTypes[7] = rm3[1].b1;
 		returnTypes[8] = rm3[2].b2;
+		break;
 	}
 	case 2: //DEF RED
 	{
@@ -186,6 +188,7 @@ std::array<RubicMatrix, 9> getBlockArray(const int& surfaceIndex, const RubicMat
 		returnTypes[6] = rm3[6].b1;
 		returnTypes[7] = rm3[7].b1;
 		returnTypes[8] = rm3[8].b3;
+		break;
 	}
 	case 3: //DEF WHITE
 	{
@@ -198,9 +201,9 @@ std::array<RubicMatrix, 9> getBlockArray(const int& surfaceIndex, const RubicMat
 		returnTypes[6] = rm3[6].b2;
 		returnTypes[7] = rm3[7].b2;
 		returnTypes[8] = rm3[8].b2;
-
+		break;
 	}
-	case 4:
+	case 4: //DEF GREEN
 	{
 		returnTypes[0] = rm1[0].b1;
 		returnTypes[1] = rm2[3].b1;
@@ -211,8 +214,9 @@ std::array<RubicMatrix, 9> getBlockArray(const int& surfaceIndex, const RubicMat
 		returnTypes[6] = rm1[6].b1;
 		returnTypes[7] = rm2[6].b1;
 		returnTypes[8] = rm3[6].b3;
+		break;
 	}
-	case 5:
+	case 5: //DEF BLUE
 	{
 		returnTypes[0] = rm1[2].b3;
 		returnTypes[1] = rm2[2].b2;
@@ -223,6 +227,7 @@ std::array<RubicMatrix, 9> getBlockArray(const int& surfaceIndex, const RubicMat
 		returnTypes[6] = rm1[8].b3;
 		returnTypes[7] = rm2[8].b1;
 		returnTypes[8] = rm3[8].b1;
+		break;
 	}
 	default:
 		break;
@@ -237,6 +242,8 @@ int main()
 	//LPrimDo(matrix1, matrix2, matrix3);
 	//LPrimDo(matrix1, matrix2, matrix3);
 	//LPrimDo(matrix1, matrix2, matrix3);
+	// 
+	//rm2[6].b1 GREEN
 
 	sfmlGrap::mainSFMLVis();
 
