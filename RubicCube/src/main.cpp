@@ -281,7 +281,7 @@ int main()
 	//LPrimDo(matrix1, matrix2, matrix3);
 	//LPrimDo(matrix1, matrix2, matrix3);
 
-
+	sfmlGrap::mainSFMLVis();
 
 	//std::cout << matrix1[2].b3 << std::endl;
 	//std::cout << matrix2[2].b2 << std::endl;

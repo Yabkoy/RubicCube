@@ -7,6 +7,10 @@ namespace sfmlGrap
 	{
 		private:
 			sf::RenderWindow* RW;
+			sf::Event mainEvent;
+			sf::RectangleShape RS;
+
+			void mainUpdateLoop();
 		public:
 			mainSFMLVis();
 			~mainSFMLVis();
