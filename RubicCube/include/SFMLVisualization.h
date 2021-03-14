@@ -1,5 +1,5 @@
 #pragma once
-#include "libs.h"
+#include "rubicElementClass.h"
 
 namespace sfmlGrap
 {
@@ -15,7 +15,7 @@ namespace sfmlGrap
 	public:
 		surfaceShape(const sf::Vector2f& entryPointPosition = sf::Vector2f(0, 0));
 
-		void initSurface();
+		void initSurface(const RubicMatrix& mainMatrix);
 		void setEntryPointPosition(const sf::Vector2f& epp);
 	};
 

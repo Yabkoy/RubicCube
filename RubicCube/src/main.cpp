@@ -1,19 +1,9 @@
 #include "../include/SFMLVisualization.h"
 
-enum Colors : int
-{
-	NONE = -1, GREEN, YELLOW, BLUE, ORANGE, WHITE, RED 
-};
 
 
-struct ThreeElementBlock
-{
-	ThreeElementBlock(const Colors& b1 = Colors::NONE, const Colors& b2 = Colors::NONE, const Colors& b3 = Colors::NONE) : b1(b1), b2(b2), b3(b3) {}
 
-	Colors b1;
-	Colors b2;
-	Colors b3;
-};
+
 
 ThreeElementBlock AR1[6] =
 {
@@ -32,7 +22,7 @@ ThreeElementBlock AR3[8] =
 	{BLUE, YELLOW, RED}, {RED, YELLOW, GREEN}, {GREEN, YELLOW, ORANGE}, {ORANGE, YELLOW, BLUE},
 	{BLUE, WHITE, RED}, {RED, WHITE , GREEN}, {GREEN, WHITE, ORANGE}, {ORANGE, WHITE, BLUE},
 };
-typedef ThreeElementBlock RubicMatrix;
+
 
 RubicMatrix matrix1[9] = //0, 3, 6
 {
@@ -150,129 +140,96 @@ void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 }
 
 
-class Camera
+std::array<RubicMatrix, 9> getBlockArray(const int& surfaceIndex, const RubicMatrix* rm1, const RubicMatrix* rm2, const RubicMatrix* rm3)
 {
-	private:
-		int surfaceIndex = 0;
-		
-		const RubicMatrix* rm1;
-		const RubicMatrix* rm2;
-		const RubicMatrix* rm3;
+	std::array<RubicMatrix, 9> returnTypes;
+	switch (surfaceIndex)
+	{
+	case 0: //DEF ORANGE
+	{
+		returnTypes[0] = rm1[0].b3;
+		returnTypes[1] = rm1[1].b2;
+		returnTypes[2] = rm1[2].b1;
 
-	public:
+		returnTypes[3] = rm1[3].b2;
+		returnTypes[4] = rm1[4].b1;
+		returnTypes[5] = rm1[5].b1;
 
-		Camera(const RubicMatrix* m1, const RubicMatrix* m2, const RubicMatrix* m3) : rm1(m1), rm2(m2), rm3(m3)
-		{
-			std::cout << "Camera Crated!\n";
+		returnTypes[6] = rm1[6].b3;
+		returnTypes[7] = rm1[7].b1;
+		returnTypes[8] = rm1[8].b1;
+	}
+	case 1: //DEF YELLOW
+	{
+		returnTypes[0] = rm1[0].b2;
+		returnTypes[1] = rm1[1].b1;
+		returnTypes[2] = rm1[2].b2;
 
+		returnTypes[3] = rm2[0].b1;
+		returnTypes[4] = rm2[1].b1;
+		returnTypes[5] = rm2[2].b1;
 
+		returnTypes[6] = rm3[0].b2;
+		returnTypes[7] = rm3[1].b1;
+		returnTypes[8] = rm3[2].b2;
+	}
+	case 2: //DEF RED
+	{
+		returnTypes[0] = rm3[0].b1;
+		returnTypes[1] = rm3[1].b2;
+		returnTypes[2] = rm3[2].b3;
 
-			std::cout << "\n\nMATRIX2: \n";
-			std::cout << rm1[0].b2 << std::endl;
-			std::cout << rm1[1].b1 << std::endl;
-			std::cout << rm1[2].b2 << std::endl;
+		returnTypes[3] = rm3[3].b1;
+		returnTypes[4] = rm3[4].b1;
+		returnTypes[5] = rm3[5].b2;
 
-			std::cout << rm2[0].b1 << std::endl;
-			std::cout << rm2[1].b1 << std::endl;
-			std::cout << rm2[2].b1 << std::endl;
+		returnTypes[6] = rm3[6].b1;
+		returnTypes[7] = rm3[7].b1;
+		returnTypes[8] = rm3[8].b3;
+	}
+	case 3: //DEF WHITE
+	{
+		returnTypes[0] = rm1[6].b2;
+		returnTypes[1] = rm1[7].b2;
+		returnTypes[2] = rm1[8].b2;
+		returnTypes[3] = rm2[6].b2;
+		returnTypes[4] = rm2[7].b1;
+		returnTypes[5] = rm2[8].b2;
+		returnTypes[6] = rm3[6].b2;
+		returnTypes[7] = rm3[7].b2;
+		returnTypes[8] = rm3[8].b2;
 
-			std::cout << rm3[0].b2 << std::endl;
-			std::cout << rm3[1].b1 << std::endl;
-			std::cout << rm3[2].b2 << std::endl;
+	}
+	case 4:
+	{
+		returnTypes[0] = rm1[0].b1;
+		returnTypes[1] = rm2[3].b1;
+		returnTypes[2] = rm3[0].b3;
+		returnTypes[3] = rm1[3].b1;
+		returnTypes[4] = rm2[3].b1;
+		returnTypes[5] = rm3[3].b2;
+		returnTypes[6] = rm1[6].b1;
+		returnTypes[7] = rm2[6].b1;
+		returnTypes[8] = rm3[6].b3;
+	}
+	case 5:
+	{
+		returnTypes[0] = rm1[2].b3;
+		returnTypes[1] = rm2[2].b2;
+		returnTypes[2] = rm3[2].b1;
+		returnTypes[3] = rm1[5].b2;
+		returnTypes[4] = rm2[5].b1;
+		returnTypes[5] = rm3[5].b1;
+		returnTypes[6] = rm1[8].b3;
+		returnTypes[7] = rm2[8].b1;
+		returnTypes[8] = rm3[8].b1;
+	}
+	default:
+		break;
+	}
 
-
-		}
-
-		std::array<RubicMatrix, 9> getBlockArray()
-		{
-			std::array<RubicMatrix, 9> returnTypes;
-			switch (surfaceIndex)
-			{
-			case 0: //DEF ORANGE
-			{
-				returnTypes[0] = rm1[0].b3;
-				returnTypes[1] = rm1[1].b2;
-				returnTypes[2] = rm1[2].b1;
-
-				returnTypes[3] = rm1[3].b2;
-				returnTypes[4] = rm1[4].b1;
-				returnTypes[5] = rm1[5].b1;
-
-				returnTypes[6] = rm1[6].b3;
-				returnTypes[7] = rm1[7].b1;
-				returnTypes[8] = rm1[8].b1;
-			}
-			case 1: //DEF YELLOW
-			{
-				returnTypes[0] = rm1[0].b2;
-				returnTypes[1] = rm1[1].b1;
-				returnTypes[2] = rm1[2].b2;
-											  
-				returnTypes[3] = rm2[0].b1;
-				returnTypes[4] = rm2[1].b1;
-				returnTypes[5] = rm2[2].b1;
-											  
-				returnTypes[6] = rm3[0].b2;
-				returnTypes[7] = rm3[1].b1;
-				returnTypes[8] = rm3[2].b2;
-			}
-			case 2: //DEF RED
-			{
-				returnTypes[0] = rm3[0].b1;
-				returnTypes[1] = rm3[1].b2;
-				returnTypes[2] = rm3[2].b3;
-										  
-				returnTypes[3] = rm3[3].b1;
-				returnTypes[4] = rm3[4].b1;
-				returnTypes[5] = rm3[5].b2;
-										  
-				returnTypes[6] = rm3[6].b1;
-				returnTypes[7] = rm3[7].b1;
-				returnTypes[8] = rm3[8].b3;
-			}
-			case 3: //DEF WHITE
-			{
-				returnTypes[0] = rm1[6].b2; 
-				returnTypes[1] = rm1[7].b2; 
-				returnTypes[2] = rm1[8].b2; 
-				returnTypes[3] = rm2[6].b2;
-				returnTypes[4] = rm2[7].b1;
-				returnTypes[5] = rm2[8].b2;
-				returnTypes[6] = rm3[6].b2;
-				returnTypes[7] = rm3[7].b2;
-				returnTypes[8] = rm3[8].b2;
-								  
-			}	
-			case 4:
-			{
-				returnTypes[0] = rm1[0].b1;
-				returnTypes[1] = rm2[3].b1;
-				returnTypes[2] = rm3[0].b3;
-				returnTypes[3] = rm1[3].b1;
-				returnTypes[4] = rm2[3].b1;
-				returnTypes[5] = rm3[3].b2;
-				returnTypes[6] = rm1[6].b1;
-				returnTypes[7] = rm2[6].b1;
-				returnTypes[8] = rm3[6].b3;
-			}
-			case 5:
-			{
-				returnTypes[0] = rm1[2].b3;
-				returnTypes[1] = rm2[2].b2;
-				returnTypes[2] = rm3[2].b1;
-				returnTypes[3] = rm1[5].b2;
-				returnTypes[4] = rm2[5].b1;
-				returnTypes[5] = rm3[5].b1;
-				returnTypes[6] = rm1[8].b3;
-				returnTypes[7] = rm2[8].b1;
-				returnTypes[8] = rm3[8].b1;
-			}
-			default:			  
-				break;
-			}
-		}
-
-};
+	return returnTypes;
+}
 
 int main()
 {	

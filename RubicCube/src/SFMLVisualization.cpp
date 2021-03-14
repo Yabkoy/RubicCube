@@ -11,7 +11,7 @@ sfmlGrap::surfaceShape::surfaceShape(const sf::Vector2f& entryPointPosition)
 
 }
 
-void sfmlGrap::surfaceShape::initSurface()
+void sfmlGrap::surfaceShape::initSurface(const RubicMatrix& mainMatrix)
 {
 	const int elementPadding = 60;
 
