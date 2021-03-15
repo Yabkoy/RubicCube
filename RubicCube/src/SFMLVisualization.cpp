@@ -170,18 +170,14 @@ void sfmlGrap::surfaceShape::initSurface()
 		
 	};
 
-	
+	int elementDone = 0;
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			static int elementDone = 0;
-
 			std::array<Colors, 9> getArray = getBlockArray(5, matrix1, matrix2, matrix3);
-			
-			std::cout << getArray[elementDone] << std::endl;
 
-			block[elementDone].setFillColor(getSfColor(getArray[elementDone]));
+			block[elementDone].setFillColor(getSfColor(getArray[elementDone])); //ERROR HERE
 			block[elementDone].setSize(sf::Vector2f(50, 50));
 			block[elementDone].setPosition(allPositionsOfBlocks[elementDone]);
 			elementDone++;
@@ -198,8 +194,24 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 {
 	RW = new sf::RenderWindow(sf::VideoMode(WINDOW_W, WINDOW_H, 32), "Rubic Cube");
 
-	testShape.setEntryPointPosition(sf::Vector2f(200, 200));
-	testShape.initSurface();
+	sf::Vector2f entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) + 25, (WINDOW_W / 2) - 25);
+	sf::Vector2f surfacesGenPositions[6] =
+	{
+		sf::Vector2f(entrySurfacePoint.x + 180, entrySurfacePoint.y),
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y),
+		sf::Vector2f(entrySurfacePoint.x - 180, entrySurfacePoint.y),
+		sf::Vector2f(entrySurfacePoint.x - 360, entrySurfacePoint.y),
+
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 180),
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 180),
+	};
+
+	for (int i = 0; i < 6; i++)
+	{
+		mainRubicSurafes[i].setEntryPointPosition(surfacesGenPositions[i]);
+		mainRubicSurafes[i].initSurface();
+	}
+
 
 	mainUpdateLoop();
 }
@@ -220,7 +232,8 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 
 		RW->clear(sf::Color::Black);
 
-		RW->draw(testShape);
+		for (int i = 0; i < 6; i++)
+			RW->draw(mainRubicSurafes[i]);
 
 		RW->display();
 	}

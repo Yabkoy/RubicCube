@@ -26,7 +26,7 @@ namespace sfmlGrap
 			sf::RenderWindow* RW;
 			sf::Event mainEvent;
 
-			surfaceShape testShape;
+			surfaceShape mainRubicSurafes[6];
 
 			void mainUpdateLoop();
 		public:
