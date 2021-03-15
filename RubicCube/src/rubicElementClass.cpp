@@ -1,5 +1,7 @@
 #include "../include/rubicElementClass.h"
 
+
+
 sf::Color getSfColor(const Colors& thisCol)
 {
 	switch (thisCol)

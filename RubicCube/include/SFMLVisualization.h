@@ -15,7 +15,7 @@ namespace sfmlGrap
 	public:
 		surfaceShape(const sf::Vector2f& entryPointPosition = sf::Vector2f(0, 0));
 
-		void initSurface(const RubicMatrix& mainMatrix);
+		void initSurface();
 		void setEntryPointPosition(const sf::Vector2f& epp);
 	};
 
