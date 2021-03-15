@@ -1,5 +1,43 @@
 #include "../include/SFMLVisualization.h"
 
+/// TODO: Rubic Cube instructions need to move:
+
+std::string getStringNamFromRubicElemnt(const Colors& element)
+{
+	switch (element)
+	{
+	case GREEN:
+		return  "GREEN";
+		break;
+	case YELLOW:
+		return  "YELLOW";
+		break;
+	case BLUE:
+		return  "BLUE";
+		break;
+	case ORANGE:
+		return  "ORANGE";
+		break;
+	case WHITE:
+		return  "WHITE";
+		break;
+	case RED:
+		return  "RED";
+		break;
+	default:
+		return  "NONE";
+		break;
+	}
+}
+
+std::ostream& operator<<(std::ostream& stream, const Colors& col)
+{
+	stream << getStringNamFromRubicElemnt(col);
+	return stream;
+}
+
+
+
 std::array<Colors, 9> getBlockArray(const int& surfaceIndex, const RubicMatrix* rm1, const RubicMatrix* rm2, const RubicMatrix* rm3)
 {
 
@@ -136,6 +174,53 @@ RubicMatrix matrix3[9] =
 	AR3[5], AR2[9], AR3[4]
 };
 
+void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
+{
+	RubicMatrix nowStatematrix1[9];
+	RubicMatrix nowStatematrix2[9];
+	RubicMatrix nowStatematrix3[9];
+
+	// Array Copy Statement ---------------
+	for (int i = 0; i < 9; i++)
+		nowStatematrix1[i] = matrix1[i];
+	for (int i = 0; i < 9; i++)
+		nowStatematrix2[i] = matrix2[i];
+	for (int i = 0; i < 9; i++)
+		nowStatematrix3[i] = matrix3[i];
+	// ------------------------------------
+
+	matrix1[0].b3 = nowStatematrix1[6].b2;
+	matrix1[3].b2 = nowStatematrix2[6].b2;
+	matrix1[6].b3 = nowStatematrix3[6].b2;
+
+	matrix1[0].b2 = nowStatematrix1[6].b3;
+	matrix2[0].b1 = nowStatematrix1[3].b2;
+	matrix3[0].b2 = nowStatematrix1[0].b3;
+
+	matrix3[0].b1 = nowStatematrix1[0].b2;
+	matrix3[3].b1 = nowStatematrix2[0].b1;
+	matrix3[6].b1 = nowStatematrix3[0].b2;
+
+	matrix1[6].b2 = nowStatematrix3[0].b1;
+	matrix2[6].b2 = nowStatematrix3[3].b1;
+	matrix3[6].b2 = nowStatematrix3[6].b1;
+
+	// ===================================
+
+	matrix1[0].b1 = nowStatematrix1[6].b1;
+	matrix2[0].b2 = nowStatematrix1[3].b1;
+	matrix3[0].b3 = nowStatematrix1[0].b1;
+
+	matrix1[3].b1 = nowStatematrix2[6].b1;
+	matrix3[3].b2 = nowStatematrix2[0].b2;
+
+	matrix1[6].b1 = nowStatematrix3[6].b3;
+	matrix2[6].b1 = nowStatematrix3[3].b2;
+
+	matrix3[6].b3 = nowStatematrix3[0].b3;
+}
+
+//ENDTODO here is sfmlMainThings
 
 void sfmlGrap::surfaceShape::draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const
 {
@@ -143,15 +228,14 @@ void sfmlGrap::surfaceShape::draw(sf::RenderTarget& mainTarget, sf::RenderStates
 		mainTarget.draw(block[i]);
 }
 
-sfmlGrap::surfaceShape::surfaceShape(const sf::Vector2f& entryPointPosition)
-{
-
-}
-
+sfmlGrap::surfaceShape::surfaceShape(const sf::Vector2f& entryPointPosition) {}
 
 void sfmlGrap::surfaceShape::initSurface()
 {
+	static int numberOfInit = 0; //BAD Code don't write this
 	const int elementPadding = 60;
+
+	
 
 	sf::Vector2f allPositionsOfBlocks[9] =
 	{
@@ -175,7 +259,7 @@ void sfmlGrap::surfaceShape::initSurface()
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			std::array<Colors, 9> getArray = getBlockArray(5, matrix1, matrix2, matrix3);
+			std::array<Colors, 9> getArray = getBlockArray(numberOfInit, matrix1, matrix2, matrix3);
 
 			block[elementDone].setFillColor(getSfColor(getArray[elementDone])); //ERROR HERE
 			block[elementDone].setSize(sf::Vector2f(50, 50));
@@ -183,6 +267,7 @@ void sfmlGrap::surfaceShape::initSurface()
 			elementDone++;
 		}
 	}
+	numberOfInit++;
 }
 void sfmlGrap::surfaceShape::setEntryPointPosition(const sf::Vector2f& epp)
 {
@@ -194,16 +279,22 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 {
 	RW = new sf::RenderWindow(sf::VideoMode(WINDOW_W, WINDOW_H, 32), "Rubic Cube");
 
+	LPrimDo(matrix1, matrix2, matrix3);
+	LPrimDo(matrix1, matrix2, matrix3);
+	LPrimDo(matrix1, matrix2, matrix3);
+
 	sf::Vector2f entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) + 25, (WINDOW_W / 2) - 25);
 	sf::Vector2f surfacesGenPositions[6] =
 	{
-		sf::Vector2f(entrySurfacePoint.x + 180, entrySurfacePoint.y),
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y),
-		sf::Vector2f(entrySurfacePoint.x - 180, entrySurfacePoint.y),
-		sf::Vector2f(entrySurfacePoint.x - 360, entrySurfacePoint.y),
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 180), //dol
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y), //srodek
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 180), //gora
 
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 180),
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 180),
+		sf::Vector2f(entrySurfacePoint.x - 360, entrySurfacePoint.y), //lewo 2
+		sf::Vector2f(entrySurfacePoint.x - 180, entrySurfacePoint.y), //lewo 1
+		
+		sf::Vector2f(entrySurfacePoint.x + 180, entrySurfacePoint.y), //po prawej
+		
 	};
 
 	for (int i = 0; i < 6; i++)
@@ -228,6 +319,10 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 		{
 			if (mainEvent.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				RW->close();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+			{
+				LPrimDo(matrix1, matrix2, matrix3);
+			}
 		}
 
 		RW->clear(sf::Color::Black);

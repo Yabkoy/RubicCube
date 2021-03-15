@@ -7,33 +7,7 @@
 //ORANGE - 3
 //WHITE - 4
 //RED - 5
-std::string getStringNamFromRubicElemnt(const Colors& element)
-{
-	switch (element)
-	{
-		case GREEN:
-			return  "GREEN";
-			break;
-		case YELLOW:
-			return  "YELLOW";
-			break;
-		case BLUE:
-			return  "BLUE";
-			break;
-		case ORANGE:
-			return  "ORANGE";
-			break;
-		case WHITE:
-			return  "WHITE";
-			break;
-		case RED:
-			return  "RED";
-			break;
-		default:
-			return  "NONE";
-			break;
-	}
-}
+
 
 void checkState(const ThreeElementBlock& m1)
 {
@@ -44,59 +18,6 @@ void checkState(const ThreeElementBlock& m1)
 	else if (m1.b1 != -1 && m1.b2 != -1 && m1.b3 != -1)
 		std::cout << "To jest trzy" << std::endl;
 }
-
-std::ostream& operator<<(std::ostream& stream, const Colors& col)
-{
-	stream << getStringNamFromRubicElemnt(col);
-	return stream;
-}
-
-void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
-{
-	RubicMatrix nowStatematrix1[9];
-	RubicMatrix nowStatematrix2[9];
-	RubicMatrix nowStatematrix3[9];
-	
-	// Array Copy Statement ---------------
-	for (int i = 0; i < 9; i++)
-		nowStatematrix1[i] = matrix1[i];
-	for (int i = 0; i < 9; i++)
-		nowStatematrix2[i] = matrix2[i];
-	for (int i = 0; i < 9; i++)
-		nowStatematrix3[i] = matrix3[i];
-	// ------------------------------------
-
-	matrix1[0].b3 = nowStatematrix1[6].b2;
-	matrix1[3].b2 = nowStatematrix2[6].b2;
-	matrix1[6].b3 = nowStatematrix3[6].b2;
-	
-	matrix1[0].b2 = nowStatematrix1[6].b3;
-	matrix2[0].b1 = nowStatematrix1[3].b2;
-	matrix3[0].b2 = nowStatematrix1[0].b3;
-	
-	matrix3[0].b1 = nowStatematrix1[0].b2;
-	matrix3[3].b1 = nowStatematrix2[0].b1;
-	matrix3[6].b1 = nowStatematrix3[0].b2;
-
-	matrix1[6].b2 = nowStatematrix3[0].b1;
-	matrix2[6].b2 = nowStatematrix3[3].b1;
-	matrix3[6].b2 = nowStatematrix3[6].b1;
-
-	// ===================================
-
-	matrix1[0].b1 = nowStatematrix1[6].b1;
-	matrix2[0].b2 = nowStatematrix1[3].b1;
-	matrix3[0].b3 = nowStatematrix1[0].b1;
-
-	matrix1[3].b1 = nowStatematrix2[6].b1;
-	matrix3[3].b2 = nowStatematrix2[0].b2;
-
-	matrix1[6].b1 = nowStatematrix3[6].b3;
-	matrix2[6].b1 = nowStatematrix3[3].b2;
-
-	matrix3[6].b3 = nowStatematrix3[0].b3;
-}
-
 
 
 
