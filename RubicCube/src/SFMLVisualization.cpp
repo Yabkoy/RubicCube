@@ -61,17 +61,18 @@ std::array<Colors, 9> getBlockArray(const int& surfaceIndex, const RubicMatrix* 
 	}
 	case 1: //DEF YELLOW
 	{
-		returnTypes[0] = rm1[0].b2;
-		returnTypes[1] = rm1[1].b1;
-		returnTypes[2] = rm1[2].b2;
+		returnTypes[0] = rm3[0].b2;
+		returnTypes[1] = rm3[1].b1;
+		returnTypes[2] = rm3[2].b2;
 
 		returnTypes[3] = rm2[0].b1;
 		returnTypes[4] = rm2[1].b1;
 		returnTypes[5] = rm2[2].b1;
 
-		returnTypes[6] = rm3[0].b2;
-		returnTypes[7] = rm3[1].b1;
-		returnTypes[8] = rm3[2].b2;
+		returnTypes[6] = rm1[0].b2;
+		returnTypes[7] = rm1[1].b1;
+		returnTypes[8] = rm1[2].b2;
+
 		break;
 	}
 	case 2: //DEF RED
@@ -104,15 +105,18 @@ std::array<Colors, 9> getBlockArray(const int& surfaceIndex, const RubicMatrix* 
 	}
 	case 4: //DEF GREEN
 	{
-		returnTypes[0] = rm1[0].b1;
-		returnTypes[1] = rm2[3].b1;
-		returnTypes[2] = rm3[0].b3;
-		returnTypes[3] = rm1[3].b1;
+		returnTypes[0] = rm3[0].b3;
+		returnTypes[1] = rm2[0].b2;
+		returnTypes[2] = rm1[0].b1;
+
+		returnTypes[3] = rm3[3].b2;
 		returnTypes[4] = rm2[3].b1;
-		returnTypes[5] = rm3[3].b2;
-		returnTypes[6] = rm1[6].b1;
+		returnTypes[5] = rm1[3].b1;
+
+		returnTypes[6] = rm3[6].b3;
 		returnTypes[7] = rm2[6].b1;
-		returnTypes[8] = rm3[6].b3;
+		returnTypes[8] = rm1[6].b1;
+
 		break;
 	}
 	case 5: //DEF BLUE
@@ -120,9 +124,11 @@ std::array<Colors, 9> getBlockArray(const int& surfaceIndex, const RubicMatrix* 
 		returnTypes[0] = rm1[2].b3;
 		returnTypes[1] = rm2[2].b2;
 		returnTypes[2] = rm3[2].b1;
+
 		returnTypes[3] = rm1[5].b2;
 		returnTypes[4] = rm2[5].b1;
 		returnTypes[5] = rm3[5].b1;
+
 		returnTypes[6] = rm1[8].b3;
 		returnTypes[7] = rm2[8].b1;
 		returnTypes[8] = rm3[8].b1;
@@ -218,6 +224,46 @@ void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 	matrix2[6].b1 = nowStatematrix3[3].b2;
 
 	matrix3[6].b3 = nowStatematrix3[0].b3;
+}
+
+void FMoveDo(RubicMatrix* matrix1)
+{
+	RubicMatrix nowStatematrix1[9];
+
+	// Array Copy Statement ---------------
+	for (int i = 0; i < 9; i++)
+		nowStatematrix1[i] = matrix1[i];
+
+	// ------------------------------------
+
+	matrix1[6].b1 = nowStatematrix1[0].b2;
+	matrix1[3].b1 = nowStatematrix1[1].b1;
+	matrix1[0].b1 = nowStatematrix1[2].b2;
+
+	matrix1[0].b2 = nowStatematrix1[2].b3;
+	matrix1[1].b1 = nowStatematrix1[5].b2;
+	matrix1[2].b2 = nowStatematrix1[8].b3;
+
+	matrix1[2].b3 = nowStatematrix1[8].b2;
+	matrix1[5].b2 = nowStatematrix1[7].b2;
+	matrix1[8].b3 = nowStatematrix1[6].b2;
+
+	matrix1[8].b2 = nowStatematrix1[6].b1;
+	matrix1[7].b2 = nowStatematrix1[3].b1;
+	matrix1[6].b2 = nowStatematrix1[0].b1;
+
+
+
+	matrix1[0].b3 = nowStatematrix1[2].b1;
+	matrix1[1].b2 = nowStatematrix1[5].b1;
+	matrix1[2].b1 = nowStatematrix1[8].b1;
+
+	matrix1[5].b1 = nowStatematrix1[7].b1;
+	matrix1[8].b1 = nowStatematrix1[6].b3;
+	matrix1[7].b1 = nowStatematrix1[3].b2;
+
+	matrix1[6].b3 = nowStatematrix1[0].b3;
+	matrix1[3].b2 = nowStatematrix1[1].b2;
 }
 
 //ENDTODO here is sfmlMainThings
@@ -319,8 +365,15 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 				RW->close();
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
+				FMoveDo(matrix1);
+				std::cout << "Do FPrim " << std::endl;
+				for (int i = 0; i < 6; i++)
+					mainRubicSurafes[i].initSurface();
+			}
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+			{
 				LPrimDo(matrix1, matrix2, matrix3);
-				std::cout << "123" << std::endl;
+				std::cout << "Do LPrim " << std::endl;
 				for (int i = 0; i < 6; i++)
 					mainRubicSurafes[i].initSurface();
 			}
