@@ -233,6 +233,8 @@ sfmlGrap::surfaceShape::surfaceShape(const sf::Vector2f& entryPointPosition) {}
 void sfmlGrap::surfaceShape::initSurface()
 {
 	static int numberOfInit = 0; //BAD Code don't write this
+	numberOfInit = (numberOfInit > 5) ? 0 : numberOfInit;
+
 	const int elementPadding = 60;
 
 	
@@ -279,10 +281,6 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 {
 	RW = new sf::RenderWindow(sf::VideoMode(WINDOW_W, WINDOW_H, 32), "Rubic Cube");
 
-	LPrimDo(matrix1, matrix2, matrix3);
-	LPrimDo(matrix1, matrix2, matrix3);
-	LPrimDo(matrix1, matrix2, matrix3);
-
 	sf::Vector2f entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) + 25, (WINDOW_W / 2) - 25);
 	sf::Vector2f surfacesGenPositions[6] =
 	{
@@ -319,9 +317,12 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 		{
 			if (mainEvent.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				RW->close();
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
 				LPrimDo(matrix1, matrix2, matrix3);
+				std::cout << "123" << std::endl;
+				for (int i = 0; i < 6; i++)
+					mainRubicSurafes[i].initSurface();
 			}
 		}
 
