@@ -95,6 +95,7 @@ std::array<Colors, 9> getBlockArray(const int& surfaceIndex, const RubicMatrix* 
 		returnTypes[0] = rm1[6].b2;
 		returnTypes[1] = rm1[7].b2;
 		returnTypes[2] = rm1[8].b2;
+
 		returnTypes[3] = rm2[6].b2;
 		returnTypes[4] = rm2[7].b1;
 		returnTypes[5] = rm2[8].b2;
@@ -207,9 +208,9 @@ void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 	matrix3[3].b1 = nowStatematrix2[0].b1;
 	matrix3[6].b1 = nowStatematrix3[0].b2;
 
-	matrix1[6].b2 = nowStatematrix3[0].b1;
+	matrix1[6].b2 = nowStatematrix3[6].b1;
 	matrix2[6].b2 = nowStatematrix3[3].b1;
-	matrix3[6].b2 = nowStatematrix3[6].b1;
+	matrix3[6].b2 = nowStatematrix3[0].b1;
 
 	// ===================================
 
@@ -327,6 +328,8 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 {
 	RW = new sf::RenderWindow(sf::VideoMode(WINDOW_W, WINDOW_H, 32), "Rubic Cube");
 
+	RW->setVerticalSyncEnabled(true);
+
 	sf::Vector2f entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) + 25, (WINDOW_W / 2) - 25);
 	sf::Vector2f surfacesGenPositions[6] =
 	{
@@ -347,6 +350,8 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 		mainRubicSurafes[i].initSurface();
 	}
 
+
+	
 
 	mainUpdateLoop();
 }
