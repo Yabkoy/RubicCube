@@ -9,6 +9,7 @@ namespace sfmlGrap
 		std::array<sf::RectangleShape, 9> block;
 		
 		sf::Vector2f entryPointPosition;
+		
 
 		virtual void draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const;
 
@@ -28,6 +29,7 @@ namespace sfmlGrap
 
 			surfaceShape mainRubicSurafes[6];
 
+			void executeStateInitialization(const std::string& message);
 			void mainUpdateLoop();
 		public:
 			mainSFMLVis();

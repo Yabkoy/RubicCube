@@ -225,6 +225,11 @@ void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 	matrix2[6].b1 = nowStatematrix3[3].b2;
 	matrix3[6].b3 = nowStatematrix3[0].b3;
 }
+void LMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
+{
+	for (int i = 0; i < 3; i++)
+		LPrimDo(matrix1, matrix2, matrix3);
+}
 
 void FMoveDo(RubicMatrix* matrix1)
 {
@@ -265,8 +270,20 @@ void FMoveDo(RubicMatrix* matrix1)
 	matrix1[6].b3 = nowStatematrix1[0].b3;
 	matrix1[3].b2 = nowStatematrix1[1].b2;
 }
+void FPrimDo(RubicMatrix* matrix1)
+{
+	for (int i = 0; i < 3; i++)
+		FMoveDo(matrix1);
+}
 
 //ENDTODO here is sfmlMainThings
+
+void sfmlGrap::mainSFMLVis::executeStateInitialization(const std::string& message)
+{
+	std::cout << message << std::endl;
+	for (int i = 0; i < 6; i++)
+		mainRubicSurafes[i].initSurface();
+}
 
 void sfmlGrap::surfaceShape::draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const
 {
@@ -367,19 +384,26 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 		{
 			if (mainEvent.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				RW->close();
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+
+			if (mainEvent.type == sf::Event::KeyPressed && mainEvent.key.code == sf::Keyboard::F)
 			{
 				FMoveDo(matrix1);
-				std::cout << "Do FPrim " << std::endl;
-				for (int i = 0; i < 6; i++)
-					mainRubicSurafes[i].initSurface();
+				executeStateInitialization("F Move");
 			}
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+			if (mainEvent.type == sf::Event::KeyPressed && mainEvent.key.code == sf::Keyboard::R)
+			{
+				FPrimDo(matrix1);
+				executeStateInitialization("F Prim Do");
+			}
+			if (mainEvent.type == sf::Event::KeyPressed && mainEvent.key.code == sf::Keyboard::L)
+			{
+				LMoveDo(matrix1, matrix2, matrix3);
+				executeStateInitialization("F Move");
+			}
+			if (mainEvent.type == sf::Event::KeyPressed && mainEvent.key.code == sf::Keyboard::O)
 			{
 				LPrimDo(matrix1, matrix2, matrix3);
-				std::cout << "Do LPrim " << std::endl;
-				for (int i = 0; i < 6; i++)
-					mainRubicSurafes[i].initSurface();
+				executeStateInitialization("F Move");
 			}
 		}
 
