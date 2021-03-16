@@ -77,17 +77,17 @@ std::array<Colors, 9> getBlockArray(const int& surfaceIndex, const RubicMatrix* 
 	}
 	case 2: //DEF RED
 	{
-		returnTypes[0] = rm3[0].b1;
-		returnTypes[1] = rm3[1].b2;
-		returnTypes[2] = rm3[2].b3;
+		returnTypes[8] = rm3[2].b3;
+		returnTypes[7] = rm3[1].b2;
+		returnTypes[6] = rm3[0].b1;
 
-		returnTypes[3] = rm3[3].b1;
-		returnTypes[4] = rm3[4].b1;
 		returnTypes[5] = rm3[5].b2;
+		returnTypes[4] = rm3[4].b1;
+		returnTypes[3] = rm3[3].b1;
 
-		returnTypes[6] = rm3[6].b1;
-		returnTypes[7] = rm3[7].b1;
-		returnTypes[8] = rm3[8].b3;
+		returnTypes[2] = rm3[8].b3;
+		returnTypes[1] = rm3[7].b1;
+		returnTypes[0] = rm3[6].b1;
 		break;
 	}
 	case 3: //DEF WHITE
@@ -223,7 +223,6 @@ void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 
 	matrix1[6].b1 = nowStatematrix3[6].b3;
 	matrix2[6].b1 = nowStatematrix3[3].b2;
-
 	matrix3[6].b3 = nowStatematrix3[0].b3;
 }
 
