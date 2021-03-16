@@ -382,28 +382,38 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 	{
 		if (RW->pollEvent(mainEvent))
 		{
-			if (mainEvent.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-				RW->close();
+			switch (mainEvent.type)
+			{
+				case sf::Event::Closed:
+					RW->close();
+					break;
+				case sf::Event::KeyPressed:
+				{
+					switch (mainEvent.key.code)
+					{
+						case sf::Keyboard::Escape:
+							RW->close();
+							break;
+						case sf::Keyboard::F:
+							FMoveDo(matrix1);
+							executeStateInitialization("F Move");
+							break;
+						case sf::Keyboard::R:
+							FPrimDo(matrix1);
+							executeStateInitialization("F Prim Do");
+							break;
+						case sf::Keyboard::L:
+							LMoveDo(matrix1, matrix2, matrix3);
+							executeStateInitialization("F Move");
+							break;
+						case sf::Keyboard::O:
+							LPrimDo(matrix1, matrix2, matrix3);
+							executeStateInitialization("F Move");
+							break;
 
-			if (mainEvent.type == sf::Event::KeyPressed && mainEvent.key.code == sf::Keyboard::F)
-			{
-				FMoveDo(matrix1);
-				executeStateInitialization("F Move");
-			}
-			if (mainEvent.type == sf::Event::KeyPressed && mainEvent.key.code == sf::Keyboard::R)
-			{
-				FPrimDo(matrix1);
-				executeStateInitialization("F Prim Do");
-			}
-			if (mainEvent.type == sf::Event::KeyPressed && mainEvent.key.code == sf::Keyboard::L)
-			{
-				LMoveDo(matrix1, matrix2, matrix3);
-				executeStateInitialization("F Move");
-			}
-			if (mainEvent.type == sf::Event::KeyPressed && mainEvent.key.code == sf::Keyboard::O)
-			{
-				LPrimDo(matrix1, matrix2, matrix3);
-				executeStateInitialization("F Move");
+					}
+					break;
+				}
 			}
 		}
 
