@@ -1,20 +1,11 @@
 #include "../include/SFMLVisualization.h"
 
-//std::ostream& operator<<(std::ostream& stream, const Colors& col)
-//{
-//	stream << getStringNamFromRubicElemnt(col);
-//	return stream;
-//}
-
-
-
 void sfmlGrap::mainSFMLVis::executeStateInitialization(const std::string& message)
 {
 	std::cout << message << std::endl;
 	for (int i = 0; i < 6; i++)
 		mainRubicSurafes[i].initSurface();
 }
-
 
 void sfmlGrap::surfaceShape::draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const
 {

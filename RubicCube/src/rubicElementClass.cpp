@@ -312,3 +312,8 @@ namespace rubicInstructions
 		}
 	}
 };
+
+namespace debugFunc
+{
+	
+};
