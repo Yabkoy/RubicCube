@@ -252,7 +252,7 @@ namespace rubicInstructions
 			matrix2[6].b2 = nowStatematrix3[3].b1;
 			matrix3[6].b2 = nowStatematrix3[0].b1;
 
-			// ===================================
+			//--------Main Surface----------------
 
 			matrix1[0].b1 = nowStatematrix1[6].b1;
 			matrix2[0].b2 = nowStatematrix1[3].b1;
@@ -292,7 +292,7 @@ namespace rubicInstructions
 			matrix1[7].b2 = nowStatematrix1[3].b1;
 			matrix1[6].b2 = nowStatematrix1[0].b1;
 
-
+			//--------Main Surface----------------
 
 			matrix1[0].b3 = nowStatematrix1[2].b1;
 			matrix1[1].b2 = nowStatematrix1[5].b1;
@@ -309,6 +309,57 @@ namespace rubicInstructions
 		{
 			for (int i = 0; i < 3; i++)
 				FMoveDo(matrix1);
+		}
+
+		void UMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
+		{
+			RubicMatrix nowStatematrix1[9];
+			RubicMatrix nowStatematrix2[9];
+			RubicMatrix nowStatematrix3[9];
+
+			// Array Copy Statement ---------------
+			for (int i = 0; i < 9; i++)
+				nowStatematrix1[i] = matrix1[i];
+			for (int i = 0; i < 9; i++)
+				nowStatematrix2[i] = matrix2[i];
+			for (int i = 0; i < 9; i++)
+				nowStatematrix3[i] = matrix3[i];
+			// ------------------------------------
+
+			matrix1[0].b1 = nowStatematrix1[2].b1;
+			matrix2[0].b2 = nowStatematrix1[1].b2;
+			matrix3[0].b3 = nowStatematrix1[0].b3;
+
+			matrix3[0].b1 = nowStatematrix1[0].b1;
+			matrix3[1].b2 = nowStatematrix2[0].b2;
+			matrix3[2].b3 = nowStatematrix3[0].b3;
+
+			matrix3[2].b1 = nowStatematrix3[0].b1;
+			matrix2[2].b2 = nowStatematrix3[1].b2;
+			matrix1[2].b3 = nowStatematrix3[2].b3;
+
+			matrix1[0].b3 = nowStatematrix1[2].b3;
+			matrix1[1].b2 = nowStatematrix2[2].b2;
+			matrix1[2].b1 = nowStatematrix3[2].b1;
+
+			//--------Main Surface----------------
+
+			matrix3[0].b2 = nowStatematrix1[0].b2;
+			matrix3[1].b1 = nowStatematrix2[0].b1;
+			matrix3[2].b2 = nowStatematrix3[0].b2;
+
+			matrix2[2].b1 = nowStatematrix3[1].b1;
+			matrix1[2].b2 = nowStatematrix3[2].b2;
+			matrix1[1].b1 = nowStatematrix2[2].b1;
+
+			matrix1[0].b2 = nowStatematrix1[2].b2;
+			matrix2[0].b1 = nowStatematrix1[1].b1;
+
+		}
+		void UPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
+		{
+			for (int i = 0; i < 3; i++)
+				UMoveDo(matrix1, matrix2, matrix3);
 		}
 	}
 };

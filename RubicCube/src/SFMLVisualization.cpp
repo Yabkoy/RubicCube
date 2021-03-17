@@ -119,11 +119,19 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					break;
 				case sf::Keyboard::L:
 					LMoveDo(matrix1, matrix2, matrix3);
-					executeStateInitialization("F Move");
+					executeStateInitialization("L Move");
 					break;
 				case sf::Keyboard::O:
 					LPrimDo(matrix1, matrix2, matrix3);
-					executeStateInitialization("F Move");
+					executeStateInitialization("L Prim Move");
+					break;
+				case sf::Keyboard::N:
+					UMoveDo(matrix1, matrix2, matrix3);
+					executeStateInitialization("U Move");
+					break;
+				case sf::Keyboard::M:
+					UPrimDo(matrix1, matrix2, matrix3);
+					executeStateInitialization("U Prim Move");
 					break;
 			}
 			break;
