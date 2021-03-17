@@ -413,6 +413,57 @@ namespace rubicInstructions
 			for (int i = 0; i < 3; i++)
 				RMoveDo(matrix1, matrix2, matrix3);
 		}
+
+		void DMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
+		{
+			RubicMatrix nowStatematrix1[9];
+			RubicMatrix nowStatematrix2[9];
+			RubicMatrix nowStatematrix3[9];
+
+			// Array Copy Statement ---------------
+			for (int i = 0; i < 9; i++)
+				nowStatematrix1[i] = matrix1[i];
+			for (int i = 0; i < 9; i++)
+				nowStatematrix2[i] = matrix2[i];
+			for (int i = 0; i < 9; i++)
+				nowStatematrix3[i] = matrix3[i];
+			// ------------------------------------
+
+			matrix1[8].b3 = nowStatematrix1[6].b3;
+			matrix2[8].b1 = nowStatematrix1[7].b1;
+			matrix3[8].b1 = nowStatematrix1[8].b1;
+
+			matrix3[8].b3 = nowStatematrix1[8].b3;
+			matrix3[7].b1 = nowStatematrix2[8].b1;
+			matrix3[6].b1 = nowStatematrix3[8].b1;
+
+			matrix3[6].b3 = nowStatematrix3[8].b3;
+			matrix2[6].b1 = nowStatematrix3[7].b1;
+			matrix1[6].b1 = nowStatematrix3[6].b1;
+
+			matrix1[6].b3 = nowStatematrix3[6].b3;
+			matrix1[7].b1 = nowStatematrix2[6].b1;
+			matrix1[8].b1 = nowStatematrix1[6].b1;
+
+			//--------Main Surface----------------
+
+			matrix1[6].b2 = nowStatematrix3[6].b2;
+			matrix1[7].b2 = nowStatematrix2[6].b2;
+			matrix1[8].b2 = nowStatematrix1[6].b2;
+
+			matrix2[8].b2 = nowStatematrix1[7].b2;
+			matrix3[8].b2 = nowStatematrix1[8].b2;
+			matrix3[7].b2 = nowStatematrix2[8].b2;
+
+			matrix3[6].b2 = nowStatematrix3[8].b2;
+			matrix2[6].b2 = nowStatematrix3[7].b2;
+
+		}
+		void DPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
+		{
+			for (int i = 0; i < 3; i++)
+				DMoveDo(matrix1, matrix2, matrix3);
+		}
 	}
 };
 
