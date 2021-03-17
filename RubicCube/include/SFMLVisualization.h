@@ -10,7 +10,7 @@ namespace sfmlGrap
 		
 		sf::Vector2f entryPointPosition;
 		
-
+		
 		virtual void draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const;
 
 	public:
@@ -30,6 +30,8 @@ namespace sfmlGrap
 			surfaceShape mainRubicSurafes[6];
 
 			void executeStateInitialization(const std::string& message);
+
+			void executePollEvent(sf::Event& myEvent);
 			void mainUpdateLoop();
 		public:
 			mainSFMLVis();
