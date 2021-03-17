@@ -9,15 +9,15 @@
 //RED - 5
 
 
-void checkState(const ThreeElementBlock& m1)
-{
-	if (m1.b1 != -1 && m1.b2 == -1 && m1.b3 == -1)
-		std::cout << "To jest One" << std::endl;
-	else if (m1.b1 != -1 && m1.b2 != -1 && m1.b3 == -1)
-		std::cout << "To jest dwa" << std::endl;
-	else if (m1.b1 != -1 && m1.b2 != -1 && m1.b3 != -1)
-		std::cout << "To jest trzy" << std::endl;
-}
+//void checkState(const ThreeElementBlock& m1)
+//{
+//	if (m1.b1 != -1 && m1.b2 == -1 && m1.b3 == -1)
+//		std::cout << "To jest One" << std::endl;
+//	else if (m1.b1 != -1 && m1.b2 != -1 && m1.b3 == -1)
+//		std::cout << "To jest dwa" << std::endl;
+//	else if (m1.b1 != -1 && m1.b2 != -1 && m1.b3 != -1)
+//		std::cout << "To jest trzy" << std::endl;
+//}
 
 
 

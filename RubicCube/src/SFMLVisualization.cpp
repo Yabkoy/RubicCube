@@ -8,48 +8,6 @@
 
 
 
-ThreeElementBlock AR1[6] =
-{
-	YELLOW, BLUE, RED, GREEN, ORANGE, WHITE,
-};
-
-ThreeElementBlock AR2[12] =
-{
-	{YELLOW, BLUE}, {YELLOW, RED}, {YELLOW, GREEN}, {YELLOW, ORANGE},
-	{BLUE, RED}, {RED, GREEN}, {GREEN, ORANGE}, {ORANGE, BLUE},
-	{BLUE, WHITE}, {RED, WHITE}, {GREEN, WHITE}, {ORANGE, WHITE},
-};
-
-ThreeElementBlock AR3[8] =
-{
-	{BLUE, YELLOW, RED}, {RED, YELLOW, GREEN}, {GREEN, YELLOW, ORANGE}, {ORANGE, YELLOW, BLUE},
-	{BLUE, WHITE, RED}, {RED, WHITE , GREEN}, {GREEN, WHITE, ORANGE}, {ORANGE, WHITE, BLUE},
-};
-
-
-RubicMatrix matrix1[9] = //0, 3, 6
-{
-	AR3[2], AR2[3], AR3[3],
-	AR2[6], AR1[4], AR2[7],
-	AR3[6], AR2[11], AR3[7],
-};
-
-RubicMatrix matrix2[9] =
-{
-	AR2[2], AR1[0], AR2[0],
-	AR1[3], Colors::NONE, AR1[1],
-	AR2[10], AR1[5], AR2[8],
-};
-RubicMatrix matrix3[9] =
-{
-	AR3[1], AR2[1], AR3[0],
-	AR2[5], AR1[2], AR2[4],
-	AR3[5], AR2[9], AR3[4]
-};
-
-
-
-
 void sfmlGrap::mainSFMLVis::executeStateInitialization(const std::string& message)
 {
 	std::cout << message << std::endl;
@@ -97,9 +55,11 @@ void sfmlGrap::surfaceShape::initSurface()
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			std::array<Colors, 9> getArray = getRubicSurfaceArray(numberOfInit, matrix1, matrix2, matrix3);
+			using namespace rubicInstructions::rubicMatrixesArray;
+			
+			std::array<Colors, 9> getArray = rubicInstructions::getRubicSurfaceArray(numberOfInit, matrix1, matrix2, matrix3);
 
-			block[elementDone].setFillColor(getSfColor(getArray[elementDone])); //ERROR HERE
+			block[elementDone].setFillColor(rubicInstructions::getSfColor(getArray[elementDone])); //ERROR HERE
 			block[elementDone].setSize(sf::Vector2f(50, 50));
 			block[elementDone].setPosition(allPositionsOfBlocks[elementDone]);
 			elementDone++;
@@ -146,7 +106,8 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 {
 	switch (mainEvent.type)
 	{
-		using namespace rubicMoves;
+		using namespace rubicInstructions::rubicMoves;
+		using namespace rubicInstructions::rubicMatrixesArray;
 		case sf::Event::Closed:
 			RW->close();
 			break;
