@@ -3,8 +3,8 @@
 #include <array>
 #include <SFML/Graphics.hpp>
 
-#define WINDOW_W 900
-#define WINDOW_H 900
+#define WINDOW_W 1000
+#define WINDOW_H 1000
 
 enum Colors : int
 {

@@ -69,17 +69,19 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 
 	RW->setVerticalSyncEnabled(true);
 
-	sf::Vector2f entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) + 25, (WINDOW_W / 2) - 25);
+	sf::Vector2f entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) -25, (WINDOW_W / 2) -100);
+
+	std::cout << "MAIN POIT: " << entrySurfacePoint.x << " - " << entrySurfacePoint.y << std::endl;
+	
 	sf::Vector2f surfacesGenPositions[6] =
 	{
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 180), //dol
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y), //srodek
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 180), //gora
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 180), //ORANGE
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y), //YELLOW
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 180), //RED
 
-		sf::Vector2f(entrySurfacePoint.x - 360, entrySurfacePoint.y), //lewo 2
-		sf::Vector2f(entrySurfacePoint.x - 180, entrySurfacePoint.y), //lewo 1
-		
-		sf::Vector2f(entrySurfacePoint.x + 180, entrySurfacePoint.y), //po prawej
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 360), //WHITE
+		sf::Vector2f(entrySurfacePoint.x - 180, entrySurfacePoint.y + 180), //GREEN
+		sf::Vector2f(entrySurfacePoint.x + 180, entrySurfacePoint.y + 180), //BLUE
 		
 	};
 
