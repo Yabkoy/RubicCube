@@ -133,9 +133,13 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					UPrimDo(matrix1, matrix2, matrix3);
 					executeStateInitialization("U Prim Move");
 					break;
-				case sf::Keyboard::Space:
+				case sf::Keyboard::X:
 					RMoveDo(matrix1, matrix2, matrix3);
 					executeStateInitialization("R Move");
+					break;
+				case sf::Keyboard::C:
+					RPrimDo(matrix1, matrix2, matrix3);
+					executeStateInitialization("R Prim Move");
 					break;
 			}
 			break;

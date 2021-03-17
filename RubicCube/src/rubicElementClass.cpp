@@ -392,6 +392,26 @@ namespace rubicInstructions
 			matrix1[8].b1 = nowStatematrix3[8].b2;
 			matrix1[5].b1 = nowStatematrix2[8].b2;
 			matrix1[2].b1 = nowStatematrix1[8].b2;
+
+			//--------Main Surface----------------
+
+			matrix1[2].b3 = nowStatematrix1[8].b3;
+			matrix2[2].b2 = nowStatematrix1[5].b2;
+			matrix3[2].b1 = nowStatematrix1[2].b3;
+
+			matrix3[5].b1 = nowStatematrix2[2].b2;
+			matrix3[8].b1 = nowStatematrix3[2].b1;
+			matrix2[8].b1 = nowStatematrix3[5].b1;
+			
+			matrix1[8].b3 = nowStatematrix3[8].b1;
+			matrix1[5].b2 = nowStatematrix2[8].b1;
+
+
+		}
+		void RPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
+		{
+			for (int i = 0; i < 3; i++)
+				RMoveDo(matrix1, matrix2, matrix3);
 		}
 	}
 };
