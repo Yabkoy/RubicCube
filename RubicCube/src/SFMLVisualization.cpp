@@ -151,6 +151,14 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					DPrimDo(matrix1, matrix2, matrix3);
 					executeStateInitialization("D Prim Move");
 					break;
+				case sf::Keyboard::Q:
+					BMoveDo(matrix3);
+					executeStateInitialization("B Move");
+					break;
+				case sf::Keyboard::W:
+					BPrimDo(matrix3);
+					executeStateInitialization("B Prim Move");
+					break;
 			}
 			break;
 		}

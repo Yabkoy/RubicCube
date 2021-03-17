@@ -52,5 +52,8 @@ namespace rubicInstructions
 
 		void DMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 		void DPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
+
+		void BMoveDo(RubicMatrix* matrix3);
+		void BPrimDo(RubicMatrix* matrix3);
 	};
 };
