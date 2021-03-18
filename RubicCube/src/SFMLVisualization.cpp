@@ -9,6 +9,9 @@ void sfmlGrap::mainSFMLVis::executeStateInitialization()
 sfmlGrap::mainSFMLVis::mainSFMLVis()
 {
 	RW = new sf::RenderWindow(sf::VideoMode(WINDOW_W, WINDOW_H, 32), "Rubic Cube");
+	rubicInstructions::initInstructions();
+
+	using rubicInstructions::myRubicSurfacePositions;
 
 	RW->setVerticalSyncEnabled(true);
 

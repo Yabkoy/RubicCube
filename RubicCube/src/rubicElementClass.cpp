@@ -1,6 +1,5 @@
 #include "../include/rubicElementClass.h"
 
-
 namespace rubicInstructions
 {
 	sf::Color getSfColor(const Colors& thisCol)
@@ -34,6 +33,18 @@ namespace rubicInstructions
 		}
 	}
 
+	void initInstructions()
+	{
+		entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) - 25, (WINDOW_W / 2) - 100);
+
+		myRubicSurfacePositions[0] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200); //ORANGE
+		myRubicSurfacePositions[1] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y); //YELLOW
+		myRubicSurfacePositions[2] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200); //RED
+		myRubicSurfacePositions[3] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400); //WHITE
+		myRubicSurfacePositions[4] = sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200); //GREEN
+		myRubicSurfacePositions[5] = sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200); //BLUE
+	}
+
 	std::string getStringNamFromRubicElemnt(const Colors& element)
 	{
 		switch (element)
@@ -62,7 +73,15 @@ namespace rubicInstructions
 		}
 	}
 
-
+	//sf::Vector2f myRubicSurfacePositions[6] =
+	//{
+	//	sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200), //ORANGE
+	//	sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y), //YELLOW
+	//	sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200), //RED
+	//	sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400), //WHITE
+	//	sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200), //GREEN
+	//	sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200), //BLUE
+	//};
 
 
 	std::array<Colors, 9> getRubicSurfaceArray(const int& surfaceIndex, const RubicMatrix* rm1, const RubicMatrix* rm2, const RubicMatrix* rm3)
@@ -495,9 +514,4 @@ namespace rubicInstructions
 				BPrimDo(matrix3);
 		}
 	}
-};
-
-namespace debugFunc
-{
-	
 };

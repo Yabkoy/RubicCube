@@ -7,17 +7,8 @@ namespace rubicInstructions
 
 	std::string getStringNamFromRubicElemnt(const Colors& element);
 
-	sf::Vector2f entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) - 25, (WINDOW_W / 2) - 100);
-
-	sf::Vector2f myRubicSurfacePositions[6] =
-	{
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200), //ORANGE
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y), //YELLOW
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200), //RED
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400), //WHITE
-		sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200), //GREEN
-		sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200), //BLUE
-	};
+	extern sf::Vector2f entrySurfacePoint;
+	extern sf::Vector2f myRubicSurfacePositions[6];
 
 	struct ThreeElementBlock
 	{
@@ -30,6 +21,8 @@ namespace rubicInstructions
 	typedef ThreeElementBlock RubicMatrix;
 
 	std::array<Colors, 9> getRubicSurfaceArray(const int& surfaceIndex, const RubicMatrix* rm1, const RubicMatrix* rm2, const RubicMatrix* rm3);
+
+	void initInstructions();
 
 	void arrayCopyFunction(RubicMatrix* source, RubicMatrix* destination);
 

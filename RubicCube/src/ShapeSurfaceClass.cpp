@@ -29,8 +29,6 @@ void sfmlGrap::surfaceShape::initSurface()
 		sf::Vector2f(entryPointPosition.x - elementPadding, entryPointPosition.y + elementPadding),
 		sf::Vector2f(entryPointPosition.x, entryPointPosition.y + elementPadding),
 		sf::Vector2f(entryPointPosition.x + elementPadding, entryPointPosition.y + elementPadding),
-
-
 	};
 
 	int elementDone = 0;
