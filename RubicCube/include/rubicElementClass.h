@@ -7,9 +7,6 @@ namespace rubicInstructions
 
 	std::string getStringNamFromRubicElemnt(const Colors& element);
 
-	extern sf::Vector2f entrySurfacePoint;
-	extern sf::Vector2f myRubicSurfacePositions[6];
-
 	struct ThreeElementBlock
 	{
 		ThreeElementBlock(const Colors& b1 = Colors::NONE, const Colors& b2 = Colors::NONE, const Colors& b3 = Colors::NONE) : b1(b1), b2(b2), b3(b3) {}
@@ -18,6 +15,14 @@ namespace rubicInstructions
 		Colors b2;
 		Colors b3;
 	};
+
+	struct entryPointPositions
+	{
+		sf::Vector2f entrySurfacePoint;
+		sf::Vector2f myRubicSurfacePositions[6];
+		entryPointPositions();
+	};
+
 	typedef ThreeElementBlock RubicMatrix;
 
 	std::array<Colors, 9> getRubicSurfaceArray(const int& surfaceIndex, const RubicMatrix* rm1, const RubicMatrix* rm2, const RubicMatrix* rm3);

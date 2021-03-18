@@ -9,15 +9,14 @@ void sfmlGrap::mainSFMLVis::executeStateInitialization()
 sfmlGrap::mainSFMLVis::mainSFMLVis()
 {
 	RW = new sf::RenderWindow(sf::VideoMode(WINDOW_W, WINDOW_H, 32), "Rubic Cube");
-	rubicInstructions::initInstructions();
 
-	using rubicInstructions::myRubicSurfacePositions;
+	rubicInstructions::entryPointPositions rubicVecs;
 
 	RW->setVerticalSyncEnabled(true);
 
 	for (int i = 0; i < 6; i++)
 	{
-		mainRubicSurafes[i].setEntryPointPosition(myRubicSurfacePositions[i]);
+		mainRubicSurafes[i].setEntryPointPosition(rubicVecs.myRubicSurfacePositions[i]);
 		mainRubicSurafes[i].initSurface();
 	}
 

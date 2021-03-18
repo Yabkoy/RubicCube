@@ -33,7 +33,9 @@ namespace rubicInstructions
 		}
 	}
 
-	void initInstructions()
+
+
+	entryPointPositions::entryPointPositions()
 	{
 		entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) - 25, (WINDOW_W / 2) - 100);
 

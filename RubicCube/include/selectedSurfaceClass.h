@@ -1,5 +1,6 @@
 #pragma once
 #include "libs.h"
+#include "rubicElementClass.h"
 
 namespace sfmlGrap
 {
@@ -7,7 +8,7 @@ namespace sfmlGrap
 	{
 	private:
 		sf::RectangleShape selectedSurfaceShape;
-		int positionIndex;
+		int positionIndex = 0;
 
 		void initPosition();
 

@@ -2,7 +2,9 @@
 
 void sfmlGrap::selectedSurface::initPosition()
 {
-
+	rubicInstructions::entryPointPositions rubicVecs;
+	selectedSurfaceShape.setPosition(rubicVecs.myRubicSurfacePositions[positionIndex]);
+	std::cout << positionIndex << std::endl;
 }
 
 
@@ -28,12 +30,7 @@ void sfmlGrap::selectedSurface::setPosition(const sf::Vector2f mainVec)
 
 void sfmlGrap::selectedSurface::moveSelectedBox(const KEYS& mainKey)
 {
-	//ORANGE 0
-	//YELLOW 1
-	//RED 2
-	//WHITE 3
-	//GREEN 4 
-	//BLUE 5
+
 	bool executeCommand = true;
 
 	switch (mainKey)
@@ -71,12 +68,18 @@ void sfmlGrap::selectedSurface::moveSelectedBox(const KEYS& mainKey)
 			{
 				executeCommand = false;
 			}
+			break;
 		case UP:
 			if (positionIndex != 2)
 			{
 				if (positionIndex == 4 || positionIndex == 5 || positionIndex == 0)
-					positionIndex = 1;
 				{
+					positionIndex = 1;
+
+				}
+				else
+				{
+					
 					switch (positionIndex)
 					{
 					case 3:
@@ -92,6 +95,7 @@ void sfmlGrap::selectedSurface::moveSelectedBox(const KEYS& mainKey)
 			{
 				executeCommand = false;
 			}
+			break;
 
 		case DOWN:
 			if (positionIndex != 3)
@@ -114,10 +118,12 @@ void sfmlGrap::selectedSurface::moveSelectedBox(const KEYS& mainKey)
 			{
 				executeCommand = false;
 			}
+			break;
 		default:
 			executeCommand = false;
 			break;
 	}
-
+	if (executeCommand == true)
+		initPosition();
 
 }
