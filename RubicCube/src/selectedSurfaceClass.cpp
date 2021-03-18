@@ -3,8 +3,8 @@
 void sfmlGrap::selectedSurface::initPosition()
 {
 	rubicInstructions::entryPointPositions rubicVecs;
-	selectedSurfaceShape.setPosition(rubicVecs.myRubicSurfacePositions[positionIndex]);
-	std::cout << positionIndex << std::endl;
+	selectedSurfaceShape.setPosition(rubicVecs.myRubicSurfacePositions[positionIndex].x + 25, rubicVecs.myRubicSurfacePositions[positionIndex].y + 25);
+
 }
 
 
@@ -20,7 +20,8 @@ sfmlGrap::selectedSurface::selectedSurface()
 	selectedSurfaceShape.setOutlineColor(sf::Color::Red);
 	selectedSurfaceShape.setOutlineThickness(4);
 	selectedSurfaceShape.setFillColor(sf::Color(0, 0, 0, 0));
-	//selectedSurfaceShape.setPosition(myRubicSurfacePositions[0].x + 26, myRubicSurfacePositions[0].y + 26);
+	rubicInstructions::entryPointPositions rubicVecs;
+	selectedSurfaceShape.setPosition(rubicVecs.myRubicSurfacePositions[positionIndex].x + 25, rubicVecs.myRubicSurfacePositions[positionIndex].y + 25);
 }
 
 void sfmlGrap::selectedSurface::setPosition(const sf::Vector2f mainVec)
