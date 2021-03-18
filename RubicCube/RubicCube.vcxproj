@@ -150,12 +150,14 @@
     <ClCompile Include="src\debugFunctions.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rubicElementClass.cpp" />
+    <ClCompile Include="src\selectedSurfaceClass.cpp" />
     <ClCompile Include="src\SFMLVisualization.cpp" />
     <ClCompile Include="src\ShapeSurfaceClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\libs.h" />
     <ClInclude Include="include\rubicElementClass.h" />
+    <ClInclude Include="include\selectedSurfaceClass.h" />
     <ClInclude Include="include\SFMLVisualization.h" />
     <ClInclude Include="include\ShapeSurfaceClass.h" />
   </ItemGroup>
