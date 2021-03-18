@@ -74,13 +74,13 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 	
 	sf::Vector2f surfacesGenPositions[6] =
 	{
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 180), //ORANGE
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200), //ORANGE
 		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y), //YELLOW
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 180), //RED
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200), //RED
 
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 360), //WHITE
-		sf::Vector2f(entrySurfacePoint.x - 180, entrySurfacePoint.y + 180), //GREEN
-		sf::Vector2f(entrySurfacePoint.x + 180, entrySurfacePoint.y + 180), //BLUE
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400), //WHITE
+		sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200), //GREEN
+		sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200), //BLUE
 		
 	};
 

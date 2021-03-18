@@ -167,6 +167,14 @@ namespace rubicInstructions
 		return returnTypes;
 	}
 
+	void arrayCopyFunction(RubicMatrix* source, RubicMatrix* destination, size_t size)
+	{
+		for (size_t i = 0; i < size; i++)
+		{
+			destination[i] = source[i];
+		}
+	}
+
 	namespace rubicBlocksArray
 	{
 		ThreeElementBlock AR1[6] =
@@ -227,14 +235,9 @@ namespace rubicInstructions
 			RubicMatrix nowStatematrix2[9];
 			RubicMatrix nowStatematrix3[9];
 
-			// Array Copy Statement ---------------
-			for (int i = 0; i < 9; i++)
-				nowStatematrix1[i] = matrix1[i];
-			for (int i = 0; i < 9; i++)
-				nowStatematrix2[i] = matrix2[i];
-			for (int i = 0; i < 9; i++)
-				nowStatematrix3[i] = matrix3[i];
-			// ------------------------------------
+			arrayCopyFunction(matrix1, nowStatematrix1, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
+			arrayCopyFunction(matrix2, nowStatematrix2, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
+			arrayCopyFunction(matrix3, nowStatematrix3, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
 
 			matrix1[0].b3 = nowStatematrix1[6].b2;
 			matrix1[3].b2 = nowStatematrix2[6].b2;
@@ -270,11 +273,7 @@ namespace rubicInstructions
 		{
 			RubicMatrix nowStatematrix1[9];
 
-			// Array Copy Statement ---------------
-			for (int i = 0; i < 9; i++)
-				nowStatematrix1[i] = matrix1[i];
-
-			// ------------------------------------
+			arrayCopyFunction(matrix1, nowStatematrix1, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
 
 			matrix1[6].b1 = nowStatematrix1[0].b2;
 			matrix1[3].b1 = nowStatematrix1[1].b1;
@@ -317,14 +316,9 @@ namespace rubicInstructions
 			RubicMatrix nowStatematrix2[9];
 			RubicMatrix nowStatematrix3[9];
 
-			// Array Copy Statement ---------------
-			for (int i = 0; i < 9; i++)
-				nowStatematrix1[i] = matrix1[i];
-			for (int i = 0; i < 9; i++)
-				nowStatematrix2[i] = matrix2[i];
-			for (int i = 0; i < 9; i++)
-				nowStatematrix3[i] = matrix3[i];
-			// ------------------------------------
+			arrayCopyFunction(matrix1, nowStatematrix1, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
+			arrayCopyFunction(matrix2, nowStatematrix2, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
+			arrayCopyFunction(matrix3, nowStatematrix3, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
 
 			matrix1[0].b1 = nowStatematrix1[2].b1;
 			matrix2[0].b2 = nowStatematrix1[1].b2;
@@ -368,14 +362,9 @@ namespace rubicInstructions
 			RubicMatrix nowStatematrix2[9];
 			RubicMatrix nowStatematrix3[9];
 
-			// Array Copy Statement ---------------
-			for (int i = 0; i < 9; i++)
-				nowStatematrix1[i] = matrix1[i];
-			for (int i = 0; i < 9; i++)
-				nowStatematrix2[i] = matrix2[i];
-			for (int i = 0; i < 9; i++)
-				nowStatematrix3[i] = matrix3[i];
-			// ------------------------------------
+			arrayCopyFunction(matrix1, nowStatematrix1, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
+			arrayCopyFunction(matrix2, nowStatematrix2, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
+			arrayCopyFunction(matrix3, nowStatematrix3, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
 
 			matrix1[2].b2 = nowStatematrix1[8].b1;
 			matrix2[2].b1 = nowStatematrix1[5].b1;
@@ -420,14 +409,9 @@ namespace rubicInstructions
 			RubicMatrix nowStatematrix2[9];
 			RubicMatrix nowStatematrix3[9];
 
-			// Array Copy Statement ---------------
-			for (int i = 0; i < 9; i++)
-				nowStatematrix1[i] = matrix1[i];
-			for (int i = 0; i < 9; i++)
-				nowStatematrix2[i] = matrix2[i];
-			for (int i = 0; i < 9; i++)
-				nowStatematrix3[i] = matrix3[i];
-			// ------------------------------------
+			arrayCopyFunction(matrix1, nowStatematrix1, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
+			arrayCopyFunction(matrix2, nowStatematrix2, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
+			arrayCopyFunction(matrix3, nowStatematrix3, (sizeof(nowStatematrix1) / sizeof(RubicMatrix)));
 
 			matrix1[8].b3 = nowStatematrix1[6].b3;
 			matrix2[8].b1 = nowStatematrix1[7].b1;
@@ -469,10 +453,7 @@ namespace rubicInstructions
 		{
 			RubicMatrix nowStatematrix3[9];
 
-			// Array Copy Statement ---------------
-			for (int i = 0; i < 9; i++)
-				nowStatematrix3[i] = matrix3[i];
-			// ------------------------------------
+			arrayCopyFunction(matrix3, nowStatematrix3, (sizeof(nowStatematrix3) / sizeof(RubicMatrix)));
 
 			matrix3[2].b1 = nowStatematrix3[0].b2;
 			matrix3[5].b1 = nowStatematrix3[1].b1;
