@@ -29,7 +29,7 @@ namespace sfmlGrap
 
 			surfaceShape mainRubicSurafes[6];
 
-			void executeStateInitialization(const std::string& message);
+			void executeStateInitialization();
 
 			void executePollEvent(sf::Event& myEvent);
 			void mainUpdateLoop();

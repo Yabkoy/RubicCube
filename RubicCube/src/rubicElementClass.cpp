@@ -266,7 +266,7 @@ namespace rubicInstructions
 			matrix3[6].b3 = nowStatematrix3[0].b3;
 		}
 
-		void FMoveDo(RubicMatrix* matrix1)
+		void FPrimDo(RubicMatrix* matrix1)
 		{
 			RubicMatrix nowStatematrix1[9];
 
@@ -305,10 +305,10 @@ namespace rubicInstructions
 			matrix1[6].b3 = nowStatematrix1[0].b3;
 			matrix1[3].b2 = nowStatematrix1[1].b2;
 		}
-		void FPrimDo(RubicMatrix* matrix1)
+		void FMoveDo(RubicMatrix* matrix1)
 		{
 			for (int i = 0; i < 3; i++)
-				FMoveDo(matrix1);
+				FPrimDo(matrix1);
 		}
 
 		void UMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
@@ -465,7 +465,7 @@ namespace rubicInstructions
 				DMoveDo(matrix1, matrix2, matrix3);
 		}
 
-		void BMoveDo(RubicMatrix* matrix3)
+		void BPrimDo(RubicMatrix* matrix3)
 		{
 			RubicMatrix nowStatematrix3[9];
 
@@ -505,10 +505,10 @@ namespace rubicInstructions
 
 		}
 
-		void BPrimDo(RubicMatrix* matrix3)
+		void BMoveDo(RubicMatrix* matrix3)
 		{
 			for (int i = 0; i < 3; i++)
-				BMoveDo(matrix3);
+				BPrimDo(matrix3);
 		}
 	}
 };

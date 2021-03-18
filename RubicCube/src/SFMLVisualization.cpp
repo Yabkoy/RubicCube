@@ -1,8 +1,7 @@
 #include "../include/SFMLVisualization.h"
 
-void sfmlGrap::mainSFMLVis::executeStateInitialization(const std::string& message)
+void sfmlGrap::mainSFMLVis::executeStateInitialization()
 {
-	std::cout << message << std::endl;
 	for (int i = 0; i < 6; i++)
 		mainRubicSurafes[i].initSurface();
 }
@@ -113,56 +112,52 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					break;
 				case sf::Keyboard::F:
 					FMoveDo(matrix1);
-					executeStateInitialization("F Move");
 					break;
 				case sf::Keyboard::R:
 					FPrimDo(matrix1);
-					executeStateInitialization("F Prim Do");
 					break;
 				case sf::Keyboard::L:
 					LMoveDo(matrix1, matrix2, matrix3);
-					executeStateInitialization("L Move");
 					break;
 				case sf::Keyboard::O:
 					LPrimDo(matrix1, matrix2, matrix3);
-					executeStateInitialization("L Prim Move");
 					break;
+
 				case sf::Keyboard::N:
 					UMoveDo(matrix1, matrix2, matrix3);
-					executeStateInitialization("U Move");
 					break;
 				case sf::Keyboard::M:
 					UPrimDo(matrix1, matrix2, matrix3);
-					executeStateInitialization("U Prim Move");
 					break;
+
 				case sf::Keyboard::X:
 					RMoveDo(matrix1, matrix2, matrix3);
-					executeStateInitialization("R Move");
+					
 					break;
 				case sf::Keyboard::C:
 					RPrimDo(matrix1, matrix2, matrix3);
-					executeStateInitialization("R Prim Move");
 					break;
+
 				case sf::Keyboard::A:
 					DMoveDo(matrix1, matrix2, matrix3);
-					executeStateInitialization("D Move");
 					break;
 				case sf::Keyboard::S:
 					DPrimDo(matrix1, matrix2, matrix3);
-					executeStateInitialization("D Prim Move");
 					break;
 				case sf::Keyboard::Q:
 					BMoveDo(matrix3);
-					executeStateInitialization("B Move");
 					break;
 				case sf::Keyboard::W:
 					BPrimDo(matrix3);
-					executeStateInitialization("B Prim Move");
 					break;
 			}
 			break;
 		}
+
+
 	}
+	executeStateInitialization();
+
 }
 
 void sfmlGrap::mainSFMLVis::mainUpdateLoop()
@@ -172,6 +167,7 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 		if (RW->pollEvent(mainEvent))
 		{
 			executePollEvent(mainEvent);
+
 		}
 
 		RW->clear(sf::Color::Black);
