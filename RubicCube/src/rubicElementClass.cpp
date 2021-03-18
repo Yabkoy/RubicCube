@@ -62,6 +62,9 @@ namespace rubicInstructions
 		}
 	}
 
+
+
+
 	std::array<Colors, 9> getRubicSurfaceArray(const int& surfaceIndex, const RubicMatrix* rm1, const RubicMatrix* rm2, const RubicMatrix* rm3)
 	{
 

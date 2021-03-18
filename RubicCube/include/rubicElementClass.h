@@ -7,6 +7,18 @@ namespace rubicInstructions
 
 	std::string getStringNamFromRubicElemnt(const Colors& element);
 
+	sf::Vector2f entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) - 25, (WINDOW_W / 2) - 100);
+
+	sf::Vector2f myRubicSurfacePositions[6] =
+	{
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200), //ORANGE
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y), //YELLOW
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200), //RED
+		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400), //WHITE
+		sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200), //GREEN
+		sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200), //BLUE
+	};
+
 	struct ThreeElementBlock
 	{
 		ThreeElementBlock(const Colors& b1 = Colors::NONE, const Colors& b2 = Colors::NONE, const Colors& b3 = Colors::NONE) : b1(b1), b2(b2), b3(b3) {}

@@ -9,6 +9,8 @@ namespace sfmlGrap
 		sf::RectangleShape selectedSurfaceShape;
 		int positionIndex;
 
+		void initPosition();
+
 		virtual void draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const;
 
 	public:
@@ -22,5 +24,7 @@ namespace sfmlGrap
 		void setPosition(const sf::Vector2f mainVec);
 
 		void moveSelectedBox(const KEYS& mainKey);
+
+		
 	};
 }

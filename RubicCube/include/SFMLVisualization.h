@@ -11,9 +11,6 @@ namespace sfmlGrap
 			sf::RenderWindow* RW;
 			sf::Event mainEvent;
 
-			sf::Vector2f entrySurfacePoint;
-			sf::Vector2f myRubicSurfacePositions[6];
-
 			surfaceShape mainRubicSurafes[6];
 			selectedSurface mainSelector;
 
