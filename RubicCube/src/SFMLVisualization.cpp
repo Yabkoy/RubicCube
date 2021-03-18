@@ -6,61 +6,104 @@ void sfmlGrap::mainSFMLVis::executeStateInitialization()
 		mainRubicSurafes[i].initSurface();
 }
 
-void sfmlGrap::surfaceShape::draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const
+
+//-- OtherClass
+
+void sfmlGrap::selectedSurface::draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const
 {
-	for (int i = 0; i < block.size(); i++)
-		mainTarget.draw(block[i]);
+	mainTarget.draw(selectedSurfaceShape);
 }
 
-sfmlGrap::surfaceShape::surfaceShape(const sf::Vector2f& entryPointPosition) {}
-
-void sfmlGrap::surfaceShape::initSurface()
+sfmlGrap::selectedSurface::selectedSurface()
 {
-	static int numberOfInit = 0; //BAD Code don't write this
-	numberOfInit = (numberOfInit > 5) ? 0 : numberOfInit;
+	selectedSurfaceShape.setSize(sf::Vector2f(190, 190));
+	selectedSurfaceShape.setOrigin(sf::Vector2f(selectedSurfaceShape.getSize().x / 2, selectedSurfaceShape.getSize().y / 2));
+	selectedSurfaceShape.setOutlineColor(sf::Color::Red);
+	selectedSurfaceShape.setOutlineThickness(4);
+	selectedSurfaceShape.setFillColor(sf::Color(0, 0, 0, 0));
+	//selectedSurfaceShape.setPosition(myRubicSurfacePositions[0].x + 26, myRubicSurfacePositions[0].y + 26);
+}
 
-	const int elementPadding = 60;
+void sfmlGrap::selectedSurface::setPosition(const sf::Vector2f mainVec)
+{
+	selectedSurfaceShape.setPosition(mainVec);
+}
 
-	
-
-	sf::Vector2f allPositionsOfBlocks[9] =
+void sfmlGrap::selectedSurface::moveSelectedBox(const KEYS& mainKey)
+{
+	//ORANGE 0
+	//YELLOW 1
+	//RED 2
+	//WHITE 3
+	//GREEN 4 
+	//BLUE 5
+	switch (mainKey)
 	{
-		sf::Vector2f(entryPointPosition.x - elementPadding, entryPointPosition.y - elementPadding),
-		sf::Vector2f(entryPointPosition.x, entryPointPosition.y - elementPadding),
-		sf::Vector2f(entryPointPosition.x + elementPadding, entryPointPosition.y - elementPadding),
-
-		sf::Vector2f(entryPointPosition.x - elementPadding, entryPointPosition.y),
-		sf::Vector2f(entryPointPosition.x, entryPointPosition.y),
-		sf::Vector2f(entryPointPosition.x + elementPadding, entryPointPosition.y),
-
-		sf::Vector2f(entryPointPosition.x - elementPadding, entryPointPosition.y + elementPadding),
-		sf::Vector2f(entryPointPosition.x, entryPointPosition.y + elementPadding),
-		sf::Vector2f(entryPointPosition.x + elementPadding, entryPointPosition.y + elementPadding),
-
-		
-	};
-
-	int elementDone = 0;
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
+	case LEFT:
+		if (positionIndex != 4)
 		{
-			using namespace rubicInstructions::rubicMatrixesArray;
-			
-			std::array<Colors, 9> getArray = rubicInstructions::getRubicSurfaceArray(numberOfInit, matrix1, matrix2, matrix3);
-
-			block[elementDone].setFillColor(rubicInstructions::getSfColor(getArray[elementDone])); //ERROR HERE
-			block[elementDone].setSize(sf::Vector2f(50, 50));
-			block[elementDone].setPosition(allPositionsOfBlocks[elementDone]);
-			elementDone++;
+			if (positionIndex == 5)
+			{
+				positionIndex = 0;
+			}
+			else
+			{
+				positionIndex = 4;
+			}
 		}
+		break;
+	case RIGHT:
+		if (positionIndex != 5)
+		{
+			if (positionIndex == 4)
+			{
+				positionIndex = 0;
+			}
+			else
+			{
+				positionIndex = 5;
+			}
+		}
+	case UP:
+		if (positionIndex != 2)
+		{
+			if (positionIndex == 4 || positionIndex == 5 || positionIndex == 0)
+				positionIndex = 1;
+			{
+				switch (positionIndex)
+				{
+				case 3:
+					positionIndex = 0;
+					break;
+				case 1:
+					positionIndex = 2;
+					break;
+				}
+			}
+		}
+	case DOWN:
+		if (positionIndex != 3)
+		{
+			if (positionIndex == 4 || positionIndex == 5 || positionIndex == 0)
+				positionIndex = 3;
+			{
+				switch (positionIndex)
+				{
+				case 1:
+					positionIndex = 0;
+					break;
+				case 2:
+					positionIndex = 1;
+					break;
+				}
+			}
+		}
+	default:
+		break;
 	}
-	numberOfInit++;
 }
-void sfmlGrap::surfaceShape::setEntryPointPosition(const sf::Vector2f& epp)
-{
-	entryPointPosition = epp;
-}
+
+//-- OtherClass
 
 sfmlGrap::mainSFMLVis::mainSFMLVis()
 {
@@ -68,31 +111,25 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 
 	RW->setVerticalSyncEnabled(true);
 
-	sf::Vector2f entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) -25, (WINDOW_W / 2) -100);
+	entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) - 25, (WINDOW_W / 2) - 100);
 
-	std::cout << "MAIN POIT: " << entrySurfacePoint.x << " - " << entrySurfacePoint.y << std::endl;
-	
-	sf::Vector2f surfacesGenPositions[6] =
-	{
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200), //ORANGE
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y), //YELLOW
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200), //RED
+	myRubicSurfacePositions[0] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200); //ORANGE
+		myRubicSurfacePositions[1] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y); //YELLOW
+	myRubicSurfacePositions[2] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200); //RED
+	myRubicSurfacePositions[3] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400); //WHITE
+	myRubicSurfacePositions[4] = sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200); //GREEN
+	myRubicSurfacePositions[5] = sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200); //BLUE
+			
 
-		sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400), //WHITE
-		sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200), //GREEN
-		sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200), //BLUE
-		
-	};
 
 	for (int i = 0; i < 6; i++)
 	{
-		mainRubicSurafes[i].setEntryPointPosition(surfacesGenPositions[i]);
+		mainRubicSurafes[i].setEntryPointPosition(myRubicSurfacePositions[i]);
 		mainRubicSurafes[i].initSurface();
 	}
 
 	mainUpdateLoop();
 }
-
 
 void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 {
@@ -150,6 +187,19 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 				case sf::Keyboard::W:
 					BPrimDo(matrix3);
 					break;
+				// ---- KEYS TO SURFACE MOVE ----
+				case sf::Keyboard::Right:
+					mainSelector.moveSelectedBox(selectedSurface::KEYS::RIGHT);
+					break;				
+				case sf::Keyboard::Left:
+					mainSelector.moveSelectedBox(selectedSurface::KEYS::LEFT);
+					break;				
+				case sf::Keyboard::Up:
+					mainSelector.moveSelectedBox(selectedSurface::KEYS::UP);
+					break;				
+				case sf::Keyboard::Down:
+					mainSelector.moveSelectedBox(selectedSurface::KEYS::DOWN);
+					break;
 			}
 			break;
 		}
@@ -174,6 +224,7 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 
 		for (int i = 0; i < 6; i++)
 			RW->draw(mainRubicSurafes[i]);
+		RW->draw(selectedSurface);
 
 		RW->display();
 	}

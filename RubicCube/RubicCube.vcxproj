@@ -151,11 +151,13 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rubicElementClass.cpp" />
     <ClCompile Include="src\SFMLVisualization.cpp" />
+    <ClCompile Include="src\ShapeSurfaceClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\libs.h" />
     <ClInclude Include="include\rubicElementClass.h" />
     <ClInclude Include="include\SFMLVisualization.h" />
+    <ClInclude Include="include\ShapeSurfaceClass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

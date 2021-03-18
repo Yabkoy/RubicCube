@@ -1,24 +1,30 @@
 #pragma once
 #include "rubicElementClass.h"
+#include "ShapeSurfaceClass.h"
 
 namespace sfmlGrap
 {
-	class surfaceShape : public sf::Drawable
+	class selectedSurface : public sf::Drawable
 	{
-	private:
-		std::array<sf::RectangleShape, 9> block;
-		
-		sf::Vector2f entryPointPosition;
-		
-		
-		virtual void draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const;
+		private:
+			sf::RectangleShape selectedSurfaceShape;
+			int positionIndex;
 
-	public:
-		surfaceShape(const sf::Vector2f& entryPointPosition = sf::Vector2f(0, 0));
+			virtual void draw(sf::RenderTarget& mainTarget, sf::RenderStates states) const;
 
-		void initSurface();
-		void setEntryPointPosition(const sf::Vector2f& epp);
+		public:
+			enum KEYS
+			{
+				NONE = -1, LEFT, UP, DOWN, RIGHT
+			};
+
+			selectedSurface();
+
+			void setPosition(const sf::Vector2f mainVec);
+
+			void moveSelectedBox(const KEYS& mainKey);
 	};
+
 
 	class mainSFMLVis
 	{
@@ -26,7 +32,11 @@ namespace sfmlGrap
 			sf::RenderWindow* RW;
 			sf::Event mainEvent;
 
+			sf::Vector2f entrySurfacePoint;
+			sf::Vector2f myRubicSurfacePositions[6];
+
 			surfaceShape mainRubicSurafes[6];
+			selectedSurface mainSelector;
 
 			void executeStateInitialization();
 
