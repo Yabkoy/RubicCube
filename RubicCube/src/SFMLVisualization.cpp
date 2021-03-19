@@ -100,7 +100,7 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					break;
 				// ---- RANDOM KEY EXECUTE ----
 				case sf::Keyboard::T:
-					allMovesArrayPointers[rand()](matrix1, matrix2, matrix3);
+					allMovesArrayPointers[rand()%12](matrix1, matrix2, matrix3);
 					break;
 
 				// ---- KEYS TO SURFACE MOVE ----
