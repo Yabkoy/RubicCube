@@ -100,8 +100,14 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					break;
 				// ---- RANDOM KEY EXECUTE ----
 				case sf::Keyboard::T:
-					allMovesArrayPointers[rand()%12](matrix1, matrix2, matrix3);
+				{
+					//for(int i=0; i<20; i++)
+					void(*nowMove)(rubicInstructions::RubicMatrix*, rubicInstructions::RubicMatrix*, rubicInstructions::RubicMatrix*) = allMovesArrayPointers[rand() % 12];
+					movesCollection.emplace_back(nowMove);
+					nowMove(matrix1, matrix2, matrix3);
+
 					break;
+				}
 
 				// ---- KEYS TO SURFACE MOVE ----
 				case sf::Keyboard::Right:
