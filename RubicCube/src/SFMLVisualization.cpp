@@ -35,6 +35,7 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 	{
 		using namespace rubicInstructions::rubicMoves;
 		using namespace rubicInstructions::rubicMatrixesArray;
+		using rubicInstructions::reverseRubicMoveVectorAdd;
 
 		case sf::Event::Closed:
 			RW->close();
@@ -48,62 +49,62 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					break;
 				case sf::Keyboard::F:
 					FMoveDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(FMoveDo);
+					reverseRubicMoveVectorAdd(movesCollection, FMoveDo);
 					break;
 				case sf::Keyboard::R:
 					FPrimDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(FPrimDo);
+					reverseRubicMoveVectorAdd(movesCollection, FPrimDo);
 					break;
 				case sf::Keyboard::L:
 					LMoveDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(LMoveDo);
+					reverseRubicMoveVectorAdd(movesCollection, LMoveDo);
 					break;
 				case sf::Keyboard::O:
 					LPrimDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(LPrimDo);
+					reverseRubicMoveVectorAdd(movesCollection, LPrimDo);
 					break;
 
 				case sf::Keyboard::N:
 					UMoveDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(UMoveDo);
+					reverseRubicMoveVectorAdd(movesCollection, UMoveDo);
 					break;
 				case sf::Keyboard::M:
 					UPrimDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(UPrimDo);
+					reverseRubicMoveVectorAdd(movesCollection, UPrimDo);
 					break;
 
 				case sf::Keyboard::X:
 					RMoveDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(RMoveDo);
+					reverseRubicMoveVectorAdd(movesCollection, RMoveDo);
 					
 					break;
 				case sf::Keyboard::C:
 					RPrimDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(RPrimDo);
+					reverseRubicMoveVectorAdd(movesCollection, RPrimDo);
 					break;
 
 				case sf::Keyboard::A:
 					DMoveDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(DMoveDo);
+					reverseRubicMoveVectorAdd(movesCollection, DMoveDo);
 					break;
 				case sf::Keyboard::S:
 					DPrimDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(DPrimDo);
+					reverseRubicMoveVectorAdd(movesCollection, DPrimDo);
 					break;
 				case sf::Keyboard::Q:
 					BMoveDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(BMoveDo);
+					reverseRubicMoveVectorAdd(movesCollection, BMoveDo);
 					break;
 				case sf::Keyboard::W:
 					BPrimDo(matrix1, matrix2, matrix3);
-					movesCollection.emplace_back(BPrimDo);
+					reverseRubicMoveVectorAdd(movesCollection, BPrimDo);
 					break;
 				// ---- RANDOM KEY EXECUTE ----
 				case sf::Keyboard::T:
 				{
 					//for(int i=0; i<20; i++)
 					void(*nowMove)(rubicInstructions::RubicMatrix*, rubicInstructions::RubicMatrix*, rubicInstructions::RubicMatrix*) = allMovesArrayPointers[rand() % 12];
-					movesCollection.emplace_back(nowMove);
+					reverseRubicMoveVectorAdd(movesCollection, nowMove);
 					nowMove(matrix1, matrix2, matrix3);
 
 					break;
@@ -123,9 +124,13 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					mainSelector.moveSelectedBox(selectedSurface::KEYS::DOWN);
 					break;
 				case sf::Keyboard::Enter:
-					for (void(*forFunc)(rubicInstructions::RubicMatrix*, rubicInstructions::RubicMatrix*, rubicInstructions::RubicMatrix*) : movesCollection)
-						forFunc(matrix1, matrix2, matrix3);
-					//positionIndex = mainSelector.moveSelectedBox(selectedSurface::KEYS::ENTER);
+
+					if (movesCollection.size() != 0)
+					{
+						(*movesCollection[movesCollection.size() - 1])(matrix1, matrix2, matrix3);
+						movesCollection.erase(movesCollection.end() - 1);
+					}
+
 					break;
 			}
 			break;
