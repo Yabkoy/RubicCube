@@ -2,6 +2,7 @@
 #include <iostream>
 #include <array>
 #include <vector>
+#include <time>
 #include <SFML/Graphics.hpp>
 
 
