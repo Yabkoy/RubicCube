@@ -35,16 +35,39 @@ namespace rubicInstructions
 
 
 
-	entryPointPositions::entryPointPositions()
+	entryPointPositions::entryPointPositions(const int& elementIndex)
 	{
 		entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) - 25, (WINDOW_W / 2) - 100);
 
-		myRubicSurfacePositions[0] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200); //ORANGE
-		myRubicSurfacePositions[1] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y); //YELLOW
-		myRubicSurfacePositions[2] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200); //RED
-		myRubicSurfacePositions[3] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400); //WHITE
-		myRubicSurfacePositions[4] = sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200); //GREEN
-		myRubicSurfacePositions[5] = sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200); //BLUE
+		unsigned int surfaceArrayIndex[36] = {
+			0, 1, 2, 3, 4, 5,
+			5, 1, 4, 3, 0, 2,
+			2, 1, 0, 3, 5, 4,
+			4, 1, 5, 3, 2, 0,
+			1, 2, 3, 0, 4, 5,
+			3, 0, 1, 2, 4, 5,
+		};
+
+		//1
+
+		myRubicSurfacePositions[surfaceArrayIndex[(elementIndex*6)]] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200); //ORANGE 0
+		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+1)]] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y); //YELLOW 1
+		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+2)]] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200); //RED 2
+		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+3)]] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400); //WHITE 3
+		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+4)]] = sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200); //GREEN 4
+		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+5)]] = sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200); //BLUE 5
+
+		//0, 1, 2, 3, 4, 5 ORANGE 
+		//5, 1, 4, 3, 0, 2 BLUE
+		//2, 1, 0, 3, 5, 4 RED
+		//4, 1, 5, 3, 2, 0 GREEN
+		//1, 2, 3, 0, 4, 5 YELLOW
+		//3, 0, 1, 2, 4, 5 WHITE
+	}
+
+	float entryPointPositions::surfaceRotate(const int& elementIndex)
+	{
+		return 0;
 	}
 
 	std::string getStringNamFromRubicElemnt(const Colors& element)
@@ -74,16 +97,6 @@ namespace rubicInstructions
 			break;
 		}
 	}
-
-	//sf::Vector2f myRubicSurfacePositions[6] =
-	//{
-	//	sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200), //ORANGE
-	//	sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y), //YELLOW
-	//	sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200), //RED
-	//	sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400), //WHITE
-	//	sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200), //GREEN
-	//	sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200), //BLUE
-	//};
 
 
 	std::array<Colors, 9> getRubicSurfaceArray(const int& surfaceIndex, const RubicMatrix* rm1, const RubicMatrix* rm2, const RubicMatrix* rm3)
@@ -293,7 +306,7 @@ namespace rubicInstructions
 			matrix3[6].b3 = nowStatematrix3[0].b3;
 		}
 
-		void FPrimDo(RubicMatrix* matrix1)
+		void FPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 		{
 			RubicMatrix nowStatematrix1[9];
 
@@ -328,10 +341,10 @@ namespace rubicInstructions
 			matrix1[6].b3 = nowStatematrix1[0].b3;
 			matrix1[3].b2 = nowStatematrix1[1].b2;
 		}
-		void FMoveDo(RubicMatrix* matrix1)
+		void FMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 		{
 			for (int i = 0; i < 3; i++)
-				FPrimDo(matrix1);
+				FPrimDo(matrix1, matrix2, matrix3);
 		}
 
 		void UMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
@@ -473,7 +486,7 @@ namespace rubicInstructions
 				DMoveDo(matrix1, matrix2, matrix3);
 		}
 
-		void BPrimDo(RubicMatrix* matrix3)
+		void BPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 		{
 			RubicMatrix nowStatematrix3[9];
 
@@ -510,10 +523,15 @@ namespace rubicInstructions
 
 		}
 
-		void BMoveDo(RubicMatrix* matrix3)
+		void BMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 		{
 			for (int i = 0; i < 3; i++)
-				BPrimDo(matrix3);
+				BPrimDo(matrix1, matrix2, matrix3);
 		}
+
+		void (*allMovesArrayPointers[12])(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3) = 
+		{
+			LMoveDo, LPrimDo, FPrimDo, FMoveDo, UMoveDo, UPrimDo, RMoveDo, RPrimDo, DMoveDo, DPrimDo, BPrimDo, BMoveDo,
+		};
 	}
 };

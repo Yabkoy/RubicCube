@@ -20,7 +20,9 @@ namespace rubicInstructions
 	{
 		sf::Vector2f entrySurfacePoint;
 		sf::Vector2f myRubicSurfacePositions[6];
-		entryPointPositions();
+		float surfaceRotate(const int& elementIndex);
+
+		entryPointPositions(const int& elementIndex);
 	};
 
 	typedef ThreeElementBlock RubicMatrix;
@@ -53,8 +55,8 @@ namespace rubicInstructions
 		void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 		void LMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 
-		void FPrimDo(RubicMatrix* matrix1);
-		void FMoveDo(RubicMatrix* matrix1);
+		void FPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
+		void FMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 
 		void UMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 		void UPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
@@ -65,7 +67,9 @@ namespace rubicInstructions
 		void DMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 		void DPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 
-		void BPrimDo(RubicMatrix* matrix3);
-		void BMoveDo(RubicMatrix* matrix3);
+		void BPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
+		void BMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
+
+		extern void (*allMovesArrayPointers[12])(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 	};
 };

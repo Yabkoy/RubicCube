@@ -11,6 +11,8 @@ namespace sfmlGrap
 			sf::RenderWindow* RW;
 			sf::Event mainEvent;
 
+			int positionIndex = 0;
+
 			surfaceShape mainRubicSurafes[6];
 			selectedSurface mainSelector;
 

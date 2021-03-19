@@ -17,14 +17,14 @@ namespace sfmlGrap
 	public:
 		enum KEYS
 		{
-			NONE = -1, LEFT, UP, DOWN, RIGHT
+			NONE = -1, LEFT, UP, DOWN, RIGHT, ENTER
 		};
 
 		selectedSurface();
 
 		void setPosition(const sf::Vector2f mainVec);
 
-		void moveSelectedBox(const KEYS& mainKey);
+		int moveSelectedBox(const KEYS& mainKey);
 
 		
 	};
