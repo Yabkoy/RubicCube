@@ -49,56 +49,56 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 				RW->close();
 				break;
 			case sf::Keyboard::F:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::FMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::FMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::R:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::FPrimDo, matrix1, matrix2, matrix3, *toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::FPrimDo, matrix1, matrix2, matrix3, *toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			
 			case sf::Keyboard::L:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::LMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::LMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::O:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::LPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::LPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 
 			case sf::Keyboard::N:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::UMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::UMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::M:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::UPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::UPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 
 			case sf::Keyboard::X:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::RMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::RMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 
 				break;
 			case sf::Keyboard::C:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::RPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::RPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 
 			case sf::Keyboard::A:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::DMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::DMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::S:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::DPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::DPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::Q:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::BMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::BMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::W:
-				toReverseFunc = executeForSurface(testIndex, rubicEnum::BPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
+				toReverseFunc = executeForSurface(mainSelector.getPositionIndex(), rubicEnum::BPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 				// ---- RANDOM KEY EXECUTE ----
@@ -134,15 +134,15 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					std::cout << "INDEX: " << mainSelector.getPositionIndex() << std::endl;
 					lastIndex = mainSelector.getPositionIndex();
 
-					mainRubicSurafes[4].rotateSurface(90);
+					//mainRubicSurafes[4].rotateSurface(90);
 
-					rubicInstructions::entryPointPositions rubicVecs(mainSelector.getPositionIndex());
-					for (int i = 0; i < 6; i++)
-					{
-						
-						mainRubicSurafes[i].setEntryPointPosition(rubicVecs.myRubicSurfacePositions[i]);
-						mainRubicSurafes[i].initSurface();
-					}
+					//rubicInstructions::entryPointPositions rubicVecs(mainSelector.getPositionIndex());
+					//for (int i = 0; i < 6; i++)
+					//{
+					//	
+					//	mainRubicSurafes[i].setEntryPointPosition(rubicVecs.myRubicSurfacePositions[i]);
+					//	mainRubicSurafes[i].initSurface();
+					//}
 
 				}
 
@@ -164,8 +164,6 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 		
 	}
 		
-
-	std::cout << movesCollection.size() << std::endl;
 	executeStateInitialization();
 }
 

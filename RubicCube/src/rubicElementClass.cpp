@@ -816,6 +816,7 @@ namespace rubicInstructions
 	{
 		using namespace rubicMoves;
 		
+		
 		// L NOTATION
 		if (source == LMoveDo)
 		{
