@@ -19,8 +19,8 @@ sfmlGrap::selectedSurface::selectedSurface()
 {
 	selectedSurfaceShape.setSize(sf::Vector2f(190, 190));
 	selectedSurfaceShape.setOrigin(sf::Vector2f(selectedSurfaceShape.getSize().x / 2, selectedSurfaceShape.getSize().y / 2));
-	selectedSurfaceShape.setOutlineColor(sf::Color::Red);
-	//selectedSurfaceShape.setOutlineThickness(4); FOR TESTING
+	selectedSurfaceShape.setOutlineThickness(1);
+	selectedSurfaceShape.setOutlineColor(sf::Color::Green);
 	selectedSurfaceShape.setFillColor(sf::Color(0, 0, 0, 0));
 
 	initPosition();
@@ -135,9 +135,16 @@ int sfmlGrap::selectedSurface::moveSelectedBox(const KEYS& mainKey)
 void sfmlGrap::selectedSurface::setVisible(const bool& value)
 {
 	if (value == true)
+	{
 		selectedSurfaceShape.setOutlineThickness(4);
+		selectedSurfaceShape.setOutlineColor(sf::Color::Red);
+	}
 	else
-		selectedSurfaceShape.setOutlineThickness(0);
+	{
+		selectedSurfaceShape.setOutlineThickness(1);
+		selectedSurfaceShape.setOutlineColor(sf::Color::Green);
+	}
+
 }
 
 bool sfmlGrap::selectedSurface::getVisibility() const
