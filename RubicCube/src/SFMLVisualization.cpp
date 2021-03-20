@@ -50,46 +50,56 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 				break;
 			case sf::Keyboard::F:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::FMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::R:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::FPrimDo, matrix1, matrix2, matrix3, *toReverseFunc);
 				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
-
 				break;
 			
 			case sf::Keyboard::L:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::LMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::O:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::LPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 
 			case sf::Keyboard::N:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::UMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::M:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::UPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 
 			case sf::Keyboard::X:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::RMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 
 				break;
 			case sf::Keyboard::C:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::RPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 
 			case sf::Keyboard::A:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::DMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::S:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::DPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::Q:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::BMoveDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 			case sf::Keyboard::W:
 				toReverseFunc = executeForSurface(testIndex, rubicEnum::BPrimDo, matrix1, matrix2, matrix3, toReverseFunc);
+				reverseRubicMoveVectorAdd(movesCollection, toReverseFunc);
 				break;
 				// ---- RANDOM KEY EXECUTE ----
 			case sf::Keyboard::T:
@@ -140,6 +150,7 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 				break;
 			}
 			case sf::Keyboard::BackSpace:
+
 				if (movesCollection.size() != 0)
 				{
 					(*movesCollection[movesCollection.size() - 1])(matrix1, matrix2, matrix3);
@@ -152,7 +163,9 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 
 		
 	}
-	
+		
+
+	std::cout << movesCollection.size() << std::endl;
 	executeStateInitialization();
 }
 
