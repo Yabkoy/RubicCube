@@ -125,12 +125,18 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					break;
 				case sf::Keyboard::Enter:
 
+					if (mainSelector.getVisibility() == true)
+					{
+						std::cout << "INDEX: "<<mainSelector.getPositionIndex() << std::endl;
+						mainSelector.setVisible(false);
+					}
+					break;
+				case sf::Keyboard::BackSpace:
 					if (movesCollection.size() != 0)
 					{
 						(*movesCollection[movesCollection.size() - 1])(matrix1, matrix2, matrix3);
 						movesCollection.erase(movesCollection.end() - 1);
 					}
-
 					break;
 			}
 			break;

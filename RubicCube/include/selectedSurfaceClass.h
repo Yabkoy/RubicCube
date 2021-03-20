@@ -26,6 +26,11 @@ namespace sfmlGrap
 
 		int moveSelectedBox(const KEYS& mainKey);
 
+		void setVisible(const bool& value);
+
+		bool getVisibility() const;
+
+		int getPositionIndex() const;
 		
 	};
 }

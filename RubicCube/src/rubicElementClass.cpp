@@ -42,13 +42,13 @@ namespace rubicInstructions
 		unsigned int surfaceArrayIndex[36] = {
 			0, 1, 2, 3, 4, 5,
 			5, 1, 4, 3, 0, 2,
-			2, 1, 0, 3, 5, 4,
+			0, 1, 2, 3, 5, 4, // <- 2
 			4, 1, 5, 3, 2, 0,
 			1, 2, 3, 0, 4, 5,
 			3, 0, 1, 2, 4, 5,
 		};
 
-		//1
+		//2
 
 		myRubicSurfacePositions[surfaceArrayIndex[(elementIndex*6)]] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200); //ORANGE 0
 		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+1)]] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y); //YELLOW 1
@@ -603,4 +603,6 @@ namespace rubicInstructions
 			vecotrDestination.emplace_back(BMoveDo);
 		}
 	}
+
+
 };
