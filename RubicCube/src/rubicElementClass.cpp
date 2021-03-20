@@ -536,7 +536,7 @@ namespace rubicInstructions
 			LMoveDo, LPrimDo, FPrimDo, FMoveDo, UMoveDo, UPrimDo, RMoveDo, RPrimDo, DMoveDo, DPrimDo, BPrimDo, BMoveDo,
 		};
 
-		void executeForSurface(const int& surfaceIndex, const rubicEnum::CubeMoves& yourCubeMove, RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3, void (*destination)(RubicMatrix*, RubicMatrix*, RubicMatrix*))
+		void (*executeForSurface (const int& surfaceIndex, const rubicEnum::CubeMoves& yourCubeMove, RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3, void (*destination)(RubicMatrix*, RubicMatrix*, RubicMatrix*)) )(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3)
 		{
 			using rubicEnum::CubeMoves;
 			switch (surfaceIndex)
@@ -808,6 +808,7 @@ namespace rubicInstructions
 			}
 
 			destination(matrix1, matrix2, matrix3);
+			return destination;
 		}
 	}
 
