@@ -16,6 +16,9 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 
 	rubicInstructions::entryPointPositions rubicVecs(positionIndex);
 
+	surfaceText.setFont("mainFont.otf");
+	surfaceText.setText("Surface: 0");
+
 	RW->setVerticalSyncEnabled(true);
 
 	for (int i = 0; i < 6; i++)
@@ -131,7 +134,7 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 
 				if (mainSelector.getVisibility() == true && lastIndex != mainSelector.getPositionIndex())
 				{
-					std::cout << "INDEX: " << mainSelector.getPositionIndex() << std::endl;
+					surfaceText.setText("Surface: "+ std::to_string(mainSelector.getPositionIndex()));
 					lastIndex = mainSelector.getPositionIndex();
 
 					//mainRubicSurafes[4].rotateSurface(90);
@@ -182,6 +185,8 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 		for (int i = 0; i < 6; i++)
 			RW->draw(mainRubicSurafes[i]);
 		RW->draw(mainSelector);
+
+		RW->draw(surfaceText);
 
 		RW->display();
 	}
