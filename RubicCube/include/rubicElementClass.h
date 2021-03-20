@@ -33,6 +33,8 @@ namespace rubicInstructions
 
 	void arrayCopyFunction(RubicMatrix* source, RubicMatrix* destination);
 
+	void rotateCube(const int& onIndex);
+
 	namespace rubicBlocksArray
 	{
 		extern ThreeElementBlock AR1[6];
@@ -52,6 +54,15 @@ namespace rubicInstructions
 
 	namespace rubicMoves
 	{
+		namespace rubicEnum
+		{
+			enum CubeMoves
+			{
+				LMoveDo, LPrimDo, FPrimDo, FMoveDo, UMoveDo, UPrimDo, RMoveDo, RPrimDo, DMoveDo, DPrimDo, BPrimDo, BMoveDo
+			};
+		};
+
+
 		void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 		void LMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 
@@ -71,6 +82,8 @@ namespace rubicInstructions
 		void BMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 
 		extern void (*allMovesArrayPointers[12])(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
+
+		extern void executeForSurface(const int& surfaceIndex, const rubicEnum::CubeMoves& yourCubeMove, RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3, void (*destination)(RubicMatrix*, RubicMatrix*, RubicMatrix*));
 	};
 
 	void reverseRubicMoveVectorAdd(std::vector<void(*)(rubicInstructions::RubicMatrix*, rubicInstructions::RubicMatrix*, rubicInstructions::RubicMatrix*)>& vecotrDestination, void(*source)(rubicInstructions::RubicMatrix*, rubicInstructions::RubicMatrix*, rubicInstructions::RubicMatrix*));

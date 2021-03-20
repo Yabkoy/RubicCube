@@ -18,5 +18,7 @@ namespace sfmlGrap
 
 		void initSurface();
 		void setEntryPointPosition(const sf::Vector2f& epp);
+
+		void rotateSurface(const float& angle);
 	};
 }

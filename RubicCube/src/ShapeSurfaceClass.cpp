@@ -52,3 +52,10 @@ void sfmlGrap::surfaceShape::setEntryPointPosition(const sf::Vector2f& epp)
 {
 	entryPointPosition = epp;
 }
+
+void sfmlGrap::surfaceShape::rotateSurface(const float& angle)
+{
+	for(int i=0; i<block.size(); i++)
+		block[i].rotate(angle);
+	
+}
