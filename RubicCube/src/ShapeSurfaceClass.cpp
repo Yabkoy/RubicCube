@@ -45,7 +45,7 @@ void sfmlGrap::surfaceShape::initSurface()
 
 			block[elementDone].setFillColor(rubicInstructions::getSfColor(getArray[elementDone])); //ERROR HERE
 			block[elementDone].setSize(sf::Vector2f(50, 50));
-			block[elementDone].setOrigin(allOriginOfBlocks[elementDone]);
+			block[elementDone].setOrigin(allOriginOfBlocks[elementDone].x + 25, allOriginOfBlocks[elementDone].y + 25);
 			elementDone++;
 		}
 	}

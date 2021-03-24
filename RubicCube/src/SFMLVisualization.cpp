@@ -161,6 +161,7 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 				}
 				break;
 			}
+
 			break;
 		}
 
