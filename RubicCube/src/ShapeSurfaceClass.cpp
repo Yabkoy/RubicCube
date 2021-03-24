@@ -16,19 +16,22 @@ void sfmlGrap::surfaceShape::initSurface()
 
 	const int elementPadding = 60;
 
-	sf::Vector2f allPositionsOfBlocks[9] =
+	for (int i = 0; i < 9; i++)
+		block[i].setPosition(entryPointPosition);
+
+	sf::Vector2f allOriginOfBlocks[9] =
 	{
-		sf::Vector2f(entryPointPosition.x - elementPadding, entryPointPosition.y - elementPadding),
-		sf::Vector2f(entryPointPosition.x, entryPointPosition.y - elementPadding),
-		sf::Vector2f(entryPointPosition.x + elementPadding, entryPointPosition.y - elementPadding),
+		sf::Vector2f(elementPadding, elementPadding),
+		sf::Vector2f(0, elementPadding),
+		sf::Vector2f(-elementPadding, elementPadding),
 
-		sf::Vector2f(entryPointPosition.x - elementPadding, entryPointPosition.y),
-		sf::Vector2f(entryPointPosition.x, entryPointPosition.y),
-		sf::Vector2f(entryPointPosition.x + elementPadding, entryPointPosition.y),
+		sf::Vector2f(elementPadding, 0),
+		sf::Vector2f(0, 0),
+		sf::Vector2f(-elementPadding, 0),
 
-		sf::Vector2f(entryPointPosition.x - elementPadding, entryPointPosition.y + elementPadding),
-		sf::Vector2f(entryPointPosition.x, entryPointPosition.y + elementPadding),
-		sf::Vector2f(entryPointPosition.x + elementPadding, entryPointPosition.y + elementPadding),
+		sf::Vector2f(elementPadding, -elementPadding),
+		sf::Vector2f(0, -elementPadding),
+		sf::Vector2f(-elementPadding, -elementPadding),
 	};
 
 	int elementDone = 0;
@@ -42,7 +45,7 @@ void sfmlGrap::surfaceShape::initSurface()
 
 			block[elementDone].setFillColor(rubicInstructions::getSfColor(getArray[elementDone])); //ERROR HERE
 			block[elementDone].setSize(sf::Vector2f(50, 50));
-			block[elementDone].setPosition(allPositionsOfBlocks[elementDone]);
+			block[elementDone].setOrigin(allOriginOfBlocks[elementDone]);
 			elementDone++;
 		}
 	}
