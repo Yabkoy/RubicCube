@@ -147,7 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\debugFunctions.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\rubicElementClass.cpp" />
     <ClCompile Include="src\selectedSurfaceClass.cpp" />

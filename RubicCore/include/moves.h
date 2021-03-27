@@ -6,6 +6,7 @@ namespace rc
 {
 	namespace moves
 	{
+
 		void LMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 		void LPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 																					  

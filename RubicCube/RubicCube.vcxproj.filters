@@ -24,9 +24,6 @@
     <ClCompile Include="src\rubicElementClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\debugFunctions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\ShapeSurfaceClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
