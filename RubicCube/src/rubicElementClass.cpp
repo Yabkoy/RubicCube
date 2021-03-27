@@ -37,25 +37,22 @@ namespace rubicInstructions
 
 	entryPointPositions::entryPointPositions(const int& elementIndex)
 	{
+		std::cout << "INDEX: " << elementIndex << std::endl;
 		entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) - 25, (WINDOW_W / 2) - 100);
 
-		unsigned int surfaceArrayIndex[36] = {
-			0, 1, 2, 3, 4, 5,
-			5, 1, 4, 3, 0, 2,
-			0, 1, 2, 3, 5, 4, // <- 2
-			4, 1, 5, 3, 2, 0,
-			1, 2, 3, 0, 4, 5,
-			3, 0, 1, 2, 4, 5,
-		};
+		myRubicSurfacePositions[0] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200); //ORANGE 0
+		myRubicSurfacePositions[1] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y); //YELLOW 1
+		myRubicSurfacePositions[2] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200); //RED 2
+		myRubicSurfacePositions[3] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400); //WHITE 3
+		myRubicSurfacePositions[4] = sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200); //GREEN 4
+		myRubicSurfacePositions[5] = sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200); //BLUE 5
 
-		//2
-
-		myRubicSurfacePositions[surfaceArrayIndex[(elementIndex*6)]] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200); //ORANGE 0
-		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+1)]] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y); //YELLOW 1
-		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+2)]] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y - 200); //RED 2
-		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+3)]] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 400); //WHITE 3
-		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+4)]] = sf::Vector2f(entrySurfacePoint.x - 200, entrySurfacePoint.y + 200); //GREEN 4
-		myRubicSurfacePositions[surfaceArrayIndex[((elementIndex*6)+5)]] = sf::Vector2f(entrySurfacePoint.x + 200, entrySurfacePoint.y + 200); //BLUE 5
+		//std::cout << (elementIndex * 6) << std::endl;
+		//std::cout << ((elementIndex * 6) + 1) << std::endl;
+		//std::cout << ((elementIndex * 6) + 2) << std::endl;
+		//std::cout << ((elementIndex * 6) + 3) << std::endl;
+		//std::cout << ((elementIndex * 6) + 4) << std::endl;
+		//std::cout << ((elementIndex * 6) + 5) << std::endl;
 
 		//0, 1, 2, 3, 4, 5 ORANGE 
 		//5, 1, 4, 3, 0, 2 BLUE

@@ -23,6 +23,7 @@ sfmlGrap::mainSFMLVis::mainSFMLVis()
 
 	for (int i = 0; i < 6; i++)
 	{
+		
 		mainRubicSurafes[i].setEntryPointPosition(rubicVecs.myRubicSurfacePositions[i]);
 		mainRubicSurafes[i].initSurface();
 	}
@@ -139,7 +140,26 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 
 					//mainRubicSurafes[4].rotateSurface(90);
 
-					//rubicInstructions::entryPointPositions rubicVecs(mainSelector.getPositionIndex());
+					//switch (mainSelector.getPositionIndex())
+					//{
+					//case 0:
+					//	
+					//default:
+					//	break;
+					//}
+
+					rubicInstructions::entryPointPositions::entryPointPositions(mainSelector.getPositionIndex());
+
+					std::cout << "EVENT: " << mainSelector.getPositionIndex() << std::endl;
+
+					rubicInstructions::entryPointPositions rubicVecs(mainSelector.getPositionIndex());
+
+
+					for (int i = 0; i < 6; i++)
+						mainRubicSurafes[i].setEntryPointPosition(rubicVecs.myRubicSurfacePositions[i]);
+
+
+					
 					//for (int i = 0; i < 6; i++)
 					//{
 					//	
@@ -161,11 +181,9 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 				}
 				break;
 			}
-
 			break;
 		}
 
-		
 	}
 		
 	executeStateInitialization();

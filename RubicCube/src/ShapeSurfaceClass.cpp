@@ -62,3 +62,9 @@ void sfmlGrap::surfaceShape::rotateSurface(const float& angle)
 		block[i].rotate(angle);
 	
 }
+
+void sfmlGrap::surfaceShape::setSurfacePosition(const sf::Vector2f& position)
+{
+	for (int i = 0; i < block.size(); i++)
+		block[i].setPosition(position);
+}
