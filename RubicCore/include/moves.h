@@ -24,5 +24,7 @@ namespace rc
 																					  
 		void BPrimDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 		void BMoveDo(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
+
+		//void (*allMovesArrayPointers[12])(RubicMatrix* matrix1, RubicMatrix* matrix2, RubicMatrix* matrix3);
 	}
 }

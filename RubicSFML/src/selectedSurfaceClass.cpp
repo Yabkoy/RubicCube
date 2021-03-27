@@ -2,7 +2,8 @@
 
 void sfmlGrap::selectedSurface::initPosition()
 {
-	rubicInstructions::entryPointPositions rubicVecs(positionIndex);
+
+	entryPointPositions rubicVecs(positionIndex);
 	//std::cout << positionIndex << std::endl;
 	//std::cout << rubicVecs.myRubicSurfacePositions[positionIndex].x + 25 << " - " << rubicVecs.myRubicSurfacePositions[positionIndex].y + 25 << std::endl;
 	selectedSurfaceShape.setPosition(rubicVecs.myRubicSurfacePositions[positionIndex].x, rubicVecs.myRubicSurfacePositions[positionIndex].y);

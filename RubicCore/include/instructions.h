@@ -21,5 +21,6 @@ namespace rc
 
 	std::string getStringNamFromRubicElemnt(const Colors& element);
 	std::array<Colors, 9> getRubicSurfaceArray(const int& surfaceIndex, const RubicMatrix* rm1, const RubicMatrix* rm2, const RubicMatrix* rm3);
+
 	void rubicArrayCopy(RubicMatrix* source, RubicMatrix* destination, size_t size);
 }

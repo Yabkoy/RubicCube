@@ -1,5 +1,6 @@
 #pragma once
 #include "libs.h"
+#include "sfmlCubeInstructions.h"
 
 namespace sfmlGrap
 {
