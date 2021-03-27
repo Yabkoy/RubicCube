@@ -39,11 +39,12 @@ void sfmlGrap::surfaceShape::initSurface()
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			using namespace rubicInstructions::rubicMatrixesArray;
+			
+			using namespace rc::matrixes;
 
-			std::array<Colors, 9> getArray = rubicInstructions::getRubicSurfaceArray(numberOfInit, matrix1, matrix2, matrix3);
+			std::array<rc::Colors, 9> getArray = rc::getRubicSurfaceArray(numberOfInit, matrix1, matrix2, matrix3);
 
-			block[elementDone].setFillColor(rubicInstructions::getSfColor(getArray[elementDone])); //ERROR HERE
+			block[elementDone].setFillColor(getSfColor(getArray[elementDone])); //ERROR HERE
 			block[elementDone].setSize(sf::Vector2f(50, 50));
 			block[elementDone].setOrigin(allOriginOfBlocks[elementDone].x + 25, allOriginOfBlocks[elementDone].y + 25);
 			elementDone++;
@@ -58,9 +59,9 @@ void sfmlGrap::surfaceShape::setEntryPointPosition(const sf::Vector2f& epp)
 
 void sfmlGrap::surfaceShape::rotateSurface(const float& angle)
 {
-	for(int i=0; i<block.size(); i++)
+	for (int i = 0; i < block.size(); i++)
 		block[i].rotate(angle);
-	
+
 }
 
 void sfmlGrap::surfaceShape::setSurfacePosition(const sf::Vector2f& position)

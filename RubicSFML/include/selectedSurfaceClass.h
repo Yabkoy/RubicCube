@@ -1,6 +1,5 @@
 #pragma once
 #include "libs.h"
-#include "rubicElementClass.h"
 
 namespace sfmlGrap
 {
@@ -31,6 +30,6 @@ namespace sfmlGrap
 		bool getVisibility() const;
 
 		int getPositionIndex() const;
-		
+
 	};
 }

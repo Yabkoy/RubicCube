@@ -152,7 +152,6 @@
     <ClCompile Include="src\selectedSurfaceClass.cpp" />
     <ClCompile Include="src\SFMLVisualization.cpp" />
     <ClCompile Include="src\ShapeSurfaceClass.cpp" />
-    <ClCompile Include="src\textOnScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\libs.h" />
@@ -160,7 +159,6 @@
     <ClInclude Include="include\selectedSurfaceClass.h" />
     <ClInclude Include="include\SFMLVisualization.h" />
     <ClInclude Include="include\ShapeSurfaceClass.h" />
-    <ClInclude Include="include\textOnScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

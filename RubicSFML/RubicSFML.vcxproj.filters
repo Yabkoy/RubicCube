@@ -21,12 +21,36 @@
     <ClCompile Include="src\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\textOnScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ShapeSurfaceClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\selectedSurfaceClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SFMLVisualization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\sfmlCubeInstructions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\libs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\textOnScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShapeSurfaceClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\selectedSurfaceClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SFMLVisualization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -40,95 +40,95 @@ int sfmlGrap::selectedSurface::moveSelectedBox(const KEYS& mainKey)
 
 	switch (mainKey)
 	{
-		case LEFT:
-			if (positionIndex != 4)
+	case LEFT:
+		if (positionIndex != 4)
+		{
+			if (positionIndex == 5)
 			{
-				if (positionIndex == 5)
-				{
-					positionIndex = 0;
-				}
-				else
-				{
-					positionIndex = 4;
-				}
+				positionIndex = 0;
 			}
 			else
 			{
-				executeCommand = false;
+				positionIndex = 4;
 			}
-			break;
-		case RIGHT:
-			if (positionIndex != 5)
-			{
-				if (positionIndex == 4)
-				{
-					positionIndex = 0;
-				}
-				else
-				{
-					positionIndex = 5;
-				}
-			}
-			else
-			{
-				executeCommand = false;
-			}
-			break;
-		case UP:
-			if (positionIndex != 2)
-			{
-				if (positionIndex == 4 || positionIndex == 5 || positionIndex == 0)
-				{
-					positionIndex = 1;
-				}
-				else
-				{
-					switch (positionIndex)
-					{
-					case 3:
-						positionIndex = 0;
-						break;
-					case 1:
-						positionIndex = 2;
-						break;
-					}
-				}
-			}
-			else
-			{
-				executeCommand = false;
-			}
-			break;
-
-		case DOWN:
-			if (positionIndex != 3)
-			{
-				if (positionIndex == 4 || positionIndex == 5 || positionIndex == 0)
-					positionIndex = 3;
-				{
-					switch (positionIndex)
-					{
-					case 1:
-						positionIndex = 0;
-						break;
-					case 2:
-						positionIndex = 1;
-						break;
-					}
-				}
-			}
-			else
-			{
-				executeCommand = false;
-			}
-			break;
-		default:
+		}
+		else
+		{
 			executeCommand = false;
-			break;
+		}
+		break;
+	case RIGHT:
+		if (positionIndex != 5)
+		{
+			if (positionIndex == 4)
+			{
+				positionIndex = 0;
+			}
+			else
+			{
+				positionIndex = 5;
+			}
+		}
+		else
+		{
+			executeCommand = false;
+		}
+		break;
+	case UP:
+		if (positionIndex != 2)
+		{
+			if (positionIndex == 4 || positionIndex == 5 || positionIndex == 0)
+			{
+				positionIndex = 1;
+			}
+			else
+			{
+				switch (positionIndex)
+				{
+				case 3:
+					positionIndex = 0;
+					break;
+				case 1:
+					positionIndex = 2;
+					break;
+				}
+			}
+		}
+		else
+		{
+			executeCommand = false;
+		}
+		break;
+
+	case DOWN:
+		if (positionIndex != 3)
+		{
+			if (positionIndex == 4 || positionIndex == 5 || positionIndex == 0)
+				positionIndex = 3;
+			{
+				switch (positionIndex)
+				{
+				case 1:
+					positionIndex = 0;
+					break;
+				case 2:
+					positionIndex = 1;
+					break;
+				}
+			}
+		}
+		else
+		{
+			executeCommand = false;
+		}
+		break;
+	default:
+		executeCommand = false;
+		break;
 	}
 	if (executeCommand == true)
 		initPosition();
-	
+
 	return positionIndex;
 }
 

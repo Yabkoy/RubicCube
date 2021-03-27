@@ -30,9 +30,6 @@
     <ClCompile Include="src\selectedSurfaceClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\textOnScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\libs.h">
@@ -48,9 +45,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\selectedSurfaceClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\textOnScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

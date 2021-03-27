@@ -150,6 +150,7 @@
     <ClInclude Include="include\libs.h" />
     <ClInclude Include="include\matrixes.h" />
     <ClInclude Include="include\moves.h" />
+    <ClInclude Include="include\rubicCore.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

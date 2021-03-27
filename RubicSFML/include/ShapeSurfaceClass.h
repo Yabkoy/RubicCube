@@ -1,6 +1,7 @@
 #pragma once
 #include "libs.h"
-#include "rubicElementClass.h"
+#include "sfmlCubeInstructions.h"
+
 namespace sfmlGrap
 {
 	class surfaceShape : public sf::Drawable
