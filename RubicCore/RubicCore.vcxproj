@@ -139,7 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\blocks.cpp" />
+    <ClCompile Include="src\instructions.cpp" />
+    <ClCompile Include="src\matrixes.cpp" />
     <ClCompile Include="src\moves.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\blocks.h" />
+    <ClInclude Include="include\instructions.h" />
+    <ClInclude Include="include\libs.h" />
+    <ClInclude Include="include\matrixes.h" />
+    <ClInclude Include="include\moves.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
