@@ -44,6 +44,8 @@ void sfmlGrap::surfaceShape::initSurface()
 
 			std::array<rc::Colors, 9> getArray = rc::getRubicSurfaceArray(numberOfInit, matrix1, matrix2, matrix3);
 
+			std::cout << elementDone << std::endl;
+
 			block[elementDone].setFillColor(getSfColor(getArray[elementDone])); //ERROR HERE
 			block[elementDone].setSize(sf::Vector2f(50, 50));
 			block[elementDone].setOrigin(allOriginOfBlocks[elementDone].x + 25, allOriginOfBlocks[elementDone].y + 25);

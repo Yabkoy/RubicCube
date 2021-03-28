@@ -38,10 +38,7 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 	switch (mainEvent.type)
 	{
 		using namespace rc::matrixes;
-
-
 		
-
 	case sf::Event::Closed:
 		RW->close();
 		break;
@@ -110,10 +107,9 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 		{
 			//for(int i=0; i<20; i++)
 
-			//TODO FIX
-			//void(*nowMove)(rc::RubicMatrix*, rc::RubicMatrix*, rc::RubicMatrix*) = rc::moves::allMovesArrayPointers[rand() % 12];
-			//reverseRubicMoveVectorAdd(movesCollection, nowMove);
-			//nowMove(matrix1, matrix2, matrix3);
+			void(*nowMove)(rc::RubicMatrix*, rc::RubicMatrix*, rc::RubicMatrix*) = rc::moves::allMovesArrayPointers[rand() % 12];
+			reverseRubicMoveVectorAdd(movesCollection, nowMove);
+			nowMove(matrix1, matrix2, matrix3);
 
 			break;
 		}
@@ -152,7 +148,7 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 
 				entryPointPositions::entryPointPositions(mainSelector.getPositionIndex());
 
-				std::cout << "EVENT: " << mainSelector.getPositionIndex() << std::endl;
+				//std::cout << "EVENT: " << mainSelector.getPositionIndex() << std::endl;
 
 				entryPointPositions rubicVecs(mainSelector.getPositionIndex());
 

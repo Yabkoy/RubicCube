@@ -34,7 +34,7 @@ sf::Color getSfColor(const rc::Colors& thisCol)
 
 entryPointPositions::entryPointPositions(const int& elementIndex)
 {
-	std::cout << "INDEX: " << elementIndex << std::endl;
+	//std::cout << "INDEX: " << elementIndex << std::endl;
 	entrySurfacePoint = sf::Vector2f((WINDOW_W / 2) - 25, (WINDOW_W / 2) - 100);
 
 	myRubicSurfacePositions[0] = sf::Vector2f(entrySurfacePoint.x, entrySurfacePoint.y + 200); //ORANGE 0
