@@ -1,10 +1,10 @@
 #pragma once
+#include <SFML/Graphics.hpp>
+#include <rubicCore.h>
 #include <iostream>
 #include <array>
 #include <vector>
 #include <time.h>
-#include <SFML/Graphics.hpp>
-#include <rubicCore.h>
 
 
 #define WINDOW_W 1000
