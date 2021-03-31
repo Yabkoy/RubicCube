@@ -10,5 +10,5 @@ private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 public:
-	oneCubeSurface(const rc::Colors& mainCol, const sf::Vector2f& position);
+	oneCubeSurface(const int& surfaceIndex, const sf::Vector2f& position);
 };

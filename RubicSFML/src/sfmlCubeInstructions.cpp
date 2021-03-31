@@ -3,27 +3,27 @@
 sf::Vector2f allPositionOfBlocks[6] =
 {
 	sf::Vector2f(WINDOW_W/2, WINDOW_H / 2),
-	sf::Vector2f(WINDOW_W / 2, (WINDOW_H / 2)+180),
-	sf::Vector2f(WINDOW_W / 2, (WINDOW_H / 2) + 360),
+	sf::Vector2f(WINDOW_W / 2, (WINDOW_H / 2)-180),
+	sf::Vector2f(WINDOW_W / 2, (WINDOW_H / 2) - 360),
 
-	sf::Vector2f(WINDOW_W / 2, (WINDOW_H / 2) - 180),
+	sf::Vector2f(WINDOW_W / 2, (WINDOW_H / 2) + 180),
 	sf::Vector2f(WINDOW_W / 2 - 180, (WINDOW_H / 2)),
 	sf::Vector2f(WINDOW_W / 2 + 180, (WINDOW_H / 2)),
 };
 
 sf::Vector2f allOriginOfBlocks[9] =
 {
-	sf::Vector2f(60, 60),
-	sf::Vector2f(0, 60),
-	sf::Vector2f(-60, 60),
+	sf::Vector2f(45, 45),
+	sf::Vector2f(0, 45),
+	sf::Vector2f(-45, 45),
 
-	sf::Vector2f(60, 0),
+	sf::Vector2f(45, 0),
 	sf::Vector2f(0, 0),
-	sf::Vector2f(-60, 0),
+	sf::Vector2f(-45, 0),
 
-	sf::Vector2f(60, -60),
-	sf::Vector2f(0, -60),
-	sf::Vector2f(-60, -60),
+	sf::Vector2f(45, -45),
+	sf::Vector2f(0, -45),
+	sf::Vector2f(-45, -45),
 };
 
 sf::Color getSfColor(const rc::Colors& thisCol)

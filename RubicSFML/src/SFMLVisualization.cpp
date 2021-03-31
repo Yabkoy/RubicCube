@@ -2,8 +2,8 @@
 
 sfmlGrap::mainSFMLVis::mainSFMLVis() : mainSurfaces
 {
-	{rc::ORANGE, allPositionOfBlocks[0] }, {rc::YELLOW, allPositionOfBlocks[1]}, {rc::RED, allPositionOfBlocks[2]},
-	{rc::WHITE, allPositionOfBlocks[3]}, {rc::GREEN, allPositionOfBlocks[4]} , {rc::BLUE, allPositionOfBlocks[5]},
+	{3, allPositionOfBlocks[0] }, {1, allPositionOfBlocks[1]}, {5, allPositionOfBlocks[2]},
+	{4, allPositionOfBlocks[3]}, {0, allPositionOfBlocks[4]} , {2, allPositionOfBlocks[5]}, 
 }
 {
 	RW = new sf::RenderWindow(sf::VideoMode(WINDOW_W, WINDOW_H, 32), "Rubic Cube");
