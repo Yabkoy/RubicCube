@@ -1,6 +1,7 @@
 #pragma once
 #include "textOnScreen.h"
 #include "oneCubeSurface.h"
+#include "selectingSurfaceEngine.h"
 
 namespace sfmlGrap
 {
@@ -13,6 +14,7 @@ namespace sfmlGrap
 		static unsigned int selectedSurfaceIndexes[36];
 
 		oneCubeSurface mainSurfaces[6];
+		selectingSurfaceEngine mainSelector;
 
 	private:
 		void executePollEvent(sf::Event& myEvent);

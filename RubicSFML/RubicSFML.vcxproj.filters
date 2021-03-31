@@ -30,6 +30,9 @@
     <ClInclude Include="include\oneCubeSurface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\selectingSurfaceEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp">
@@ -45,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\oneCubeSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\selectingSurfaceEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

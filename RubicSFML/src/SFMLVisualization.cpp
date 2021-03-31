@@ -52,8 +52,21 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 					for (int i = 0; i < 6; i++)
 					{
 						mainSurfaces[i].setDisplayingSurface(selectedSurfaceIndexes[i+24]);
-						
+						rc::moves::allMovesArrayPointers[0];
 					}
+					break;
+				case sf::Keyboard::Left:
+					mainSelector.changeSelectBox(sf::Keyboard::Left);
+					break;
+				case sf::Keyboard::Right:
+					mainSelector.changeSelectBox(sf::Keyboard::Right);
+					break;
+				case sf::Keyboard::Up:
+					mainSelector.changeSelectBox(sf::Keyboard::Up);
+					break;
+				case sf::Keyboard::Down:
+					mainSelector.changeSelectBox(sf::Keyboard::Down);
+					break;
 			}
 			break;
 		}
@@ -74,6 +87,7 @@ void sfmlGrap::mainSFMLVis::mainUpdateLoop()
 		
 		for (int i = 0; i < 6; i++)
 			RW->draw(mainSurfaces[i]);
+		RW->draw(mainSelector);
 
 		RW->display();
 	}
