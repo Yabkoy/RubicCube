@@ -3,13 +3,10 @@
 
 sf::Color getSfColor(const rc::Colors& thisCol);
 
-struct entryPointPositions
-{
-	sf::Vector2f entrySurfacePoint;
-	sf::Vector2f myRubicSurfacePositions[6];
+extern sf::Vector2f allPositionOfBlocks[6];
+extern sf::Vector2f allOriginOfBlocks[9];
 
-	entryPointPositions(const int& elementIndex);
-};
+
 namespace enumMoves
 {
 	enum CubeMoves

@@ -2,7 +2,7 @@
 
 int main()
 {
-	srand(time(NULL));
+	srand( time(NULL));
 	sfmlGrap::mainSFMLVis();
 	return 0;
 }
