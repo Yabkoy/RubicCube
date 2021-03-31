@@ -67,6 +67,8 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 				case sf::Keyboard::Down:
 					mainSelector.changeSelectBox(sf::Keyboard::Down);
 					break;
+				case sf::Keyboard::Enter:
+					mainSelector.enterSelectedIndex(mainSurfaces, selectedSurfaceIndexes);
 			}
 			break;
 		}

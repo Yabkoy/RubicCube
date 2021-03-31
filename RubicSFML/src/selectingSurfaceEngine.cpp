@@ -81,6 +81,12 @@ void selectingSurfaceEngine::changeSelectBox(const sf::Keyboard::Key keyPressed)
 	renderBox();
 }
 
+void selectingSurfaceEngine::enterSelectedIndex(oneCubeSurface* ocs, const unsigned int* selectedSurIndex)
+{
+	for (int i = 0; i < 6; i++)
+		ocs[i].setDisplayingSurface(selectedSurIndex[i + (positionIndex*6)]);
+}
+
 selectingSurfaceEngine::selectingSurfaceEngine()
 {
 	selectedIndexShape.setSize(sf::Vector2f(150, 150));

@@ -1,6 +1,7 @@
 #pragma once
 #include "libs.h"
 #include "sfmlCubeInstructions.h"
+#include "oneCubeSurface.h"
 
 class selectingSurfaceEngine : public sf::Drawable
 {
@@ -15,5 +16,6 @@ private:
 
 public:
 	void changeSelectBox(const sf::Keyboard::Key keyPressed);
+	void enterSelectedIndex(oneCubeSurface* ocs, const unsigned int* selectedSurIndex);
 	selectingSurfaceEngine();
 };
