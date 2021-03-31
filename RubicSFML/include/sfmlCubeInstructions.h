@@ -4,8 +4,6 @@
 sf::Color getSfColor(const rc::Colors& thisCol);
 
 extern sf::Vector2f allPositionOfBlocks[6];
-extern sf::Vector2f allOriginOfBlocks[9];
-
 
 namespace enumMoves
 {

@@ -10,6 +10,8 @@ namespace sfmlGrap
 		sf::RenderWindow* RW;
 		sf::Event mainEvent;
 
+		static unsigned int selectedSurfaceIndexes[36];
+
 		oneCubeSurface mainSurfaces[6];
 
 	private:

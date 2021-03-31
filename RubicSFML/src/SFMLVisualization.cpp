@@ -1,9 +1,27 @@
 #include "../include/SFMLVisualization.h"
 
+
+unsigned int sfmlGrap::mainSFMLVis::selectedSurfaceIndexes[36] =
+{
+	3, 1, 5, 4, 0, 2,
+	1, 5, 4, 3, 0, 2,
+	5, 4, 3, 1, 0, 2,
+	4, 3, 1, 5, 0, 2,
+	0, 1, 2, 4, 5, 3,
+	2, 1, 0, 4, 3, 5,
+};
+
+//ORANGE 3, 1, 5, 4, 0, 2
+//YELLOW 1, 5, 4, 3, 0, 2
+//RED    5, 4, 3, 1, 0, 2
+//WHITE  4, 3, 1, 5, 0, 2
+//GREEN  0, 1, 2, 4, 5, 3
+//BLUE   2, 1, 0, 4, 3, 5
+
 sfmlGrap::mainSFMLVis::mainSFMLVis() : mainSurfaces
 {
 	{3, allPositionOfBlocks[0] }, {1, allPositionOfBlocks[1]}, {5, allPositionOfBlocks[2]},
-	{4, allPositionOfBlocks[3]}, {0, allPositionOfBlocks[4]} , {2, allPositionOfBlocks[5]}, 
+	{4, allPositionOfBlocks[3]}, {0, allPositionOfBlocks[4]} , {2, allPositionOfBlocks[5]}, //NONE = -1, GREEN - 0 , YELLOW - 1, BLUE - 2, ORANGE - 3, WHITE - 4, RED - 5 
 }
 {
 	RW = new sf::RenderWindow(sf::VideoMode(WINDOW_W, WINDOW_H, 32), "Rubic Cube");
@@ -12,6 +30,8 @@ sfmlGrap::mainSFMLVis::mainSFMLVis() : mainSurfaces
 
 	mainUpdateLoop();
 }
+
+
 
 void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 {
@@ -28,6 +48,12 @@ void sfmlGrap::mainSFMLVis::executePollEvent(sf::Event& mainEvent)
 				case sf::Keyboard::Escape:
 				RW->close();
 				break;
+				case sf::Keyboard::Space:
+					for (int i = 0; i < 6; i++)
+					{
+						mainSurfaces[i].setDisplayingSurface(selectedSurfaceIndexes[i+24]);
+						
+					}
 			}
 			break;
 		}

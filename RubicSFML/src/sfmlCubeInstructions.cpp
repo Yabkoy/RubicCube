@@ -11,21 +11,6 @@ sf::Vector2f allPositionOfBlocks[6] =
 	sf::Vector2f(WINDOW_W / 2 + 180, (WINDOW_H / 2)),
 };
 
-sf::Vector2f allOriginOfBlocks[9] =
-{
-	sf::Vector2f(45, 45),
-	sf::Vector2f(0, 45),
-	sf::Vector2f(-45, 45),
-
-	sf::Vector2f(45, 0),
-	sf::Vector2f(0, 0),
-	sf::Vector2f(-45, 0),
-
-	sf::Vector2f(45, -45),
-	sf::Vector2f(0, -45),
-	sf::Vector2f(-45, -45),
-};
-
 sf::Color getSfColor(const rc::Colors& thisCol)
 {
 	switch (thisCol)
@@ -58,281 +43,281 @@ sf::Color getSfColor(const rc::Colors& thisCol)
 }
 
 
-//void (*executeForSurface(const int& surfaceIndex, const enumMoves::CubeMoves& yourCubeMove, rc::RubicMatrix* matrix1, rc::RubicMatrix* matrix2, rc::RubicMatrix* matrix3, void (*destination)(rc::RubicMatrix*, rc::RubicMatrix*, rc::RubicMatrix*)))(rc::RubicMatrix* matrix1, rc::RubicMatrix* matrix2, rc::RubicMatrix* matrix3)
-//{
-//	using enumMoves::CubeMoves;
-//	switch (surfaceIndex)
-//	{
-//	case 0:
-//		switch (yourCubeMove)
-//		{
-//		case CubeMoves::LMoveDo:
-//			
-//			destination = rc::moves::LMoveDo;
-//			break;
-//		case CubeMoves::LPrimDo:
-//			destination = rc::moves::LPrimDo;
-//			break;
-//		case CubeMoves::FPrimDo:
-//			destination = rc::moves::FPrimDo;
-//			break;
-//		case CubeMoves::FMoveDo:
-//			destination = rc::moves::FMoveDo;
-//			break;
-//		case CubeMoves::UMoveDo:
-//			destination = rc::moves::UMoveDo;
-//			break;
-//		case CubeMoves::UPrimDo:
-//			destination = rc::moves::UPrimDo;
-//			break;
-//		case CubeMoves::RMoveDo:
-//			destination = rc::moves::RMoveDo;
-//			break;
-//		case CubeMoves::RPrimDo:
-//			destination = rc::moves::RPrimDo;
-//			break;
-//		case CubeMoves::DMoveDo:
-//			destination = rc::moves::DMoveDo;
-//			break;
-//		case CubeMoves::DPrimDo:
-//			destination = rc::moves::DPrimDo;
-//			break;
-//		case CubeMoves::BPrimDo:
-//			destination = rc::moves::BPrimDo;
-//			break;
-//		case CubeMoves::BMoveDo:
-//			destination = rc::moves::BMoveDo;
-//			break;
-//		}
-//		break;
-//	case 1:
-//		switch (yourCubeMove)
-//		{
-//		case CubeMoves::LMoveDo:
-//			destination = rc::moves::LMoveDo;
-//			break;
-//		case CubeMoves::LPrimDo:
-//			destination = rc::moves::LPrimDo;
-//			break;
-//
-//		case CubeMoves::FPrimDo:
-//			destination = rc::moves::UPrimDo;
-//			break;
-//		case CubeMoves::FMoveDo:
-//			destination = rc::moves::UMoveDo;
-//			break;
-//		case CubeMoves::UMoveDo:
-//			destination = rc::moves::BMoveDo;
-//			break;
-//		case CubeMoves::UPrimDo:
-//			destination = rc::moves::BPrimDo;
-//			break;
-//
-//		case CubeMoves::RMoveDo:
-//			destination = rc::moves::RMoveDo;
-//			break;
-//		case CubeMoves::RPrimDo:
-//			destination = rc::moves::RPrimDo;
-//			break;
-//
-//		case CubeMoves::DMoveDo:
-//			destination = rc::moves::FMoveDo;
-//			break;
-//		case CubeMoves::DPrimDo:
-//			destination = rc::moves::FPrimDo;
-//			break;
-//		case CubeMoves::BPrimDo:
-//			destination = rc::moves::DPrimDo;
-//			break;
-//		case CubeMoves::BMoveDo:
-//			destination = rc::moves::DMoveDo;
-//			break;
-//		}
-//		break;
-//	case 2:
-//		switch (yourCubeMove)
-//		{
-//		case CubeMoves::LMoveDo:
-//			destination = rc::moves::LMoveDo;
-//			break;
-//		case CubeMoves::LPrimDo:
-//			destination = rc::moves::LPrimDo;
-//			break;
-//
-//
-//		case CubeMoves::FPrimDo:
-//			destination = rc::moves::BPrimDo;
-//			break;
-//		case CubeMoves::FMoveDo:
-//			destination = rc::moves::BMoveDo;
-//			break;
-//		case CubeMoves::UMoveDo:
-//
-//			destination = rc::moves::DMoveDo;
-//			break;
-//		case CubeMoves::UPrimDo:
-//
-//			destination = rc::moves::DPrimDo;
-//			break;
-//
-//
-//		case CubeMoves::RMoveDo:
-//			destination = rc::moves::RMoveDo;
-//			break;
-//		case CubeMoves::RPrimDo:
-//			destination = rc::moves::RPrimDo;
-//			break;
-//
-//
-//		case CubeMoves::DMoveDo:
-//			destination = rc::moves::UMoveDo;
-//			break;
-//		case CubeMoves::DPrimDo:
-//			destination = rc::moves::UPrimDo;
-//			break;
-//
-//		case CubeMoves::BPrimDo:
-//			destination = rc::moves::FMoveDo;
-//			break;
-//		case CubeMoves::BMoveDo:
-//			destination = rc::moves::FPrimDo;
-//			break;
-//		}
-//		break;
-//	case 3:
-//		switch (yourCubeMove)
-//		{
-//		case CubeMoves::LMoveDo:
-//			destination = rc::moves::LMoveDo;
-//			break;
-//		case CubeMoves::LPrimDo:
-//			destination = rc::moves::LPrimDo;
-//			break;
-//
-//
-//		case CubeMoves::FPrimDo:
-//			destination = rc::moves::DPrimDo;
-//			break;
-//		case CubeMoves::FMoveDo:
-//			destination = rc::moves::DMoveDo;
-//			break;
-//
-//		case CubeMoves::UMoveDo:
-//			destination = rc::moves::FMoveDo;
-//			break;
-//		case CubeMoves::UPrimDo:
-//			destination = rc::moves::FPrimDo;
-//			break;
-//		case CubeMoves::RMoveDo:
-//			destination = rc::moves::RMoveDo;
-//			break;
-//		case CubeMoves::RPrimDo:
-//			destination = rc::moves::RPrimDo;
-//			break;
-//
-//		case CubeMoves::DMoveDo:
-//			destination = rc::moves::BPrimDo;
-//			break;
-//		case CubeMoves::DPrimDo:
-//			destination = rc::moves::BMoveDo;
-//			break;
-//		case CubeMoves::BPrimDo:
-//			destination = rc::moves::UPrimDo;
-//			break;
-//		case CubeMoves::BMoveDo:
-//			destination = rc::moves::UMoveDo;
-//			break;
-//		}
-//		break;
-//	case 4:
-//		switch (yourCubeMove)
-//		{
-//		case CubeMoves::LMoveDo:
-//			destination = rc::moves::BMoveDo;
-//			break;
-//		case CubeMoves::LPrimDo:
-//			destination = rc::moves::BPrimDo;
-//			break;
-//		case CubeMoves::FPrimDo:
-//			destination = rc::moves::FPrimDo;
-//			break;
-//		case CubeMoves::FMoveDo:
-//			destination = rc::moves::FMoveDo;
-//			break;
-//		case CubeMoves::UMoveDo:
-//			destination = rc::moves::UMoveDo;
-//			break;
-//		case CubeMoves::UPrimDo:
-//			destination = rc::moves::UPrimDo;
-//			break;
-//		case CubeMoves::RMoveDo:
-//			destination = rc::moves::FMoveDo;
-//			break;
-//		case CubeMoves::RPrimDo:
-//			destination = rc::moves::FPrimDo;
-//			break;
-//		case CubeMoves::DMoveDo:
-//			destination = rc::moves::DMoveDo;
-//			break;
-//		case CubeMoves::DPrimDo:
-//			destination = rc::moves::DPrimDo;
-//			break;
-//		case CubeMoves::BPrimDo:
-//			destination = rc::moves::RPrimDo;
-//			break;
-//		case CubeMoves::BMoveDo:
-//			destination = rc::moves::RMoveDo;
-//			break;
-//		}
-//		break;
-//	case 5:
-//		switch (yourCubeMove)
-//		{
-//		case CubeMoves::LMoveDo:
-//			destination = rc::moves::FPrimDo;
-//			break;
-//		case CubeMoves::LPrimDo:
-//			destination = rc::moves::FMoveDo;
-//			break;
-//		case CubeMoves::FPrimDo:
-//			destination = rc::moves::RMoveDo;
-//			break;
-//		case CubeMoves::FMoveDo:
-//			destination = rc::moves::FMoveDo;
-//			break;
-//		case CubeMoves::UMoveDo:
-//			destination = rc::moves::UMoveDo;
-//			break;
-//		case CubeMoves::UPrimDo:
-//			destination = rc::moves::UPrimDo;
-//			break;
-//		case CubeMoves::RMoveDo:
-//			destination = rc::moves::BMoveDo;
-//			break;
-//		case CubeMoves::RPrimDo:
-//			destination = rc::moves::BPrimDo;
-//			break;
-//		case CubeMoves::DMoveDo:
-//			destination = rc::moves::DMoveDo;
-//			break;
-//		case CubeMoves::DPrimDo:
-//			destination = rc::moves::DPrimDo;
-//			break;
-//		case CubeMoves::BPrimDo:
-//			destination = rc::moves::LPrimDo;
-//			break;
-//		case CubeMoves::BMoveDo:
-//			destination = rc::moves::LMoveDo;
-//			break;
-//		}
-//		break;
-//	default:
-//		break;
-//	}
-//
-//	destination(matrix1, matrix2, matrix3);
-//	return destination;
-//}
+void (*executeForSurface(const int& surfaceIndex, const enumMoves::CubeMoves& yourCubeMove, rc::RubicMatrix* matrix1, rc::RubicMatrix* matrix2, rc::RubicMatrix* matrix3, void (*destination)(rc::RubicMatrix*, rc::RubicMatrix*, rc::RubicMatrix*)))(rc::RubicMatrix* matrix1, rc::RubicMatrix* matrix2, rc::RubicMatrix* matrix3)
+{
+	using enumMoves::CubeMoves;
+	switch (surfaceIndex)
+	{
+	case 0:
+		switch (yourCubeMove) //Orange
+		{
+		case CubeMoves::LMoveDo:
+			
+			destination = rc::moves::LMoveDo;
+			break;
+		case CubeMoves::LPrimDo:
+			destination = rc::moves::LPrimDo;
+			break;
+		case CubeMoves::FPrimDo:
+			destination = rc::moves::FPrimDo;
+			break;
+		case CubeMoves::FMoveDo:
+			destination = rc::moves::FMoveDo;
+			break;
+		case CubeMoves::UMoveDo:
+			destination = rc::moves::UMoveDo;
+			break;
+		case CubeMoves::UPrimDo:
+			destination = rc::moves::UPrimDo;
+			break;
+		case CubeMoves::RMoveDo:
+			destination = rc::moves::RMoveDo;
+			break;
+		case CubeMoves::RPrimDo:
+			destination = rc::moves::RPrimDo;
+			break;
+		case CubeMoves::DMoveDo:
+			destination = rc::moves::DMoveDo;
+			break;
+		case CubeMoves::DPrimDo:
+			destination = rc::moves::DPrimDo;
+			break;
+		case CubeMoves::BPrimDo:
+			destination = rc::moves::BPrimDo;
+			break;
+		case CubeMoves::BMoveDo:
+			destination = rc::moves::BMoveDo;
+			break;
+		}
+		break;
+	case 1:
+		switch (yourCubeMove) //Yellow
+		{
+		case CubeMoves::LMoveDo:
+			destination = rc::moves::LMoveDo;
+			break;
+		case CubeMoves::LPrimDo:
+			destination = rc::moves::LPrimDo;
+			break;
+
+		case CubeMoves::FPrimDo:
+			destination = rc::moves::UPrimDo;
+			break;
+		case CubeMoves::FMoveDo:
+			destination = rc::moves::UMoveDo;
+			break;
+		case CubeMoves::UMoveDo:
+			destination = rc::moves::BMoveDo;
+			break;
+		case CubeMoves::UPrimDo:
+			destination = rc::moves::BPrimDo;
+			break;
+
+		case CubeMoves::RMoveDo:
+			destination = rc::moves::RMoveDo;
+			break;
+		case CubeMoves::RPrimDo:
+			destination = rc::moves::RPrimDo;
+			break;
+
+		case CubeMoves::DMoveDo:
+			destination = rc::moves::FMoveDo;
+			break;
+		case CubeMoves::DPrimDo:
+			destination = rc::moves::FPrimDo;
+			break;
+		case CubeMoves::BPrimDo:
+			destination = rc::moves::DPrimDo;
+			break;
+		case CubeMoves::BMoveDo:
+			destination = rc::moves::DMoveDo;
+			break;
+		}
+		break;
+	case 2:
+		switch (yourCubeMove) //RED
+		{
+		case CubeMoves::LMoveDo:
+			destination = rc::moves::LMoveDo;
+			break;
+		case CubeMoves::LPrimDo:
+			destination = rc::moves::LPrimDo;
+			break;
+
+
+		case CubeMoves::FPrimDo:
+			destination = rc::moves::BPrimDo;
+			break;
+		case CubeMoves::FMoveDo:
+			destination = rc::moves::BMoveDo;
+			break;
+		case CubeMoves::UMoveDo:
+
+			destination = rc::moves::DMoveDo;
+			break;
+		case CubeMoves::UPrimDo:
+
+			destination = rc::moves::DPrimDo;
+			break;
+
+
+		case CubeMoves::RMoveDo:
+			destination = rc::moves::RMoveDo;
+			break;
+		case CubeMoves::RPrimDo:
+			destination = rc::moves::RPrimDo;
+			break;
+
+
+		case CubeMoves::DMoveDo:
+			destination = rc::moves::UMoveDo;
+			break;
+		case CubeMoves::DPrimDo:
+			destination = rc::moves::UPrimDo;
+			break;
+
+		case CubeMoves::BPrimDo:
+			destination = rc::moves::FMoveDo;
+			break;
+		case CubeMoves::BMoveDo:
+			destination = rc::moves::FPrimDo;
+			break;
+		}
+		break;
+	case 3: //White
+		switch (yourCubeMove)
+		{
+		case CubeMoves::LMoveDo:
+			destination = rc::moves::LMoveDo;
+			break;
+		case CubeMoves::LPrimDo:
+			destination = rc::moves::LPrimDo;
+			break;
+
+
+		case CubeMoves::FPrimDo:
+			destination = rc::moves::DPrimDo;
+			break;
+		case CubeMoves::FMoveDo:
+			destination = rc::moves::DMoveDo;
+			break;
+
+		case CubeMoves::UMoveDo:
+			destination = rc::moves::FMoveDo;
+			break;
+		case CubeMoves::UPrimDo:
+			destination = rc::moves::FPrimDo;
+			break;
+		case CubeMoves::RMoveDo:
+			destination = rc::moves::RMoveDo;
+			break;
+		case CubeMoves::RPrimDo:
+			destination = rc::moves::RPrimDo;
+			break;
+
+		case CubeMoves::DMoveDo:
+			destination = rc::moves::BPrimDo;
+			break;
+		case CubeMoves::DPrimDo:
+			destination = rc::moves::BMoveDo;
+			break;
+		case CubeMoves::BPrimDo:
+			destination = rc::moves::UPrimDo;
+			break;
+		case CubeMoves::BMoveDo:
+			destination = rc::moves::UMoveDo;
+			break;
+		}
+		break;
+	case 4: //Green
+		switch (yourCubeMove)
+		{
+		case CubeMoves::LMoveDo:
+			destination = rc::moves::BMoveDo;
+			break;
+		case CubeMoves::LPrimDo:
+			destination = rc::moves::BPrimDo;
+			break;
+		case CubeMoves::FPrimDo:
+			destination = rc::moves::FPrimDo;
+			break;
+		case CubeMoves::FMoveDo:
+			destination = rc::moves::FMoveDo;
+			break;
+		case CubeMoves::UMoveDo:
+			destination = rc::moves::UMoveDo;
+			break;
+		case CubeMoves::UPrimDo:
+			destination = rc::moves::UPrimDo;
+			break;
+		case CubeMoves::RMoveDo:
+			destination = rc::moves::FMoveDo;
+			break;
+		case CubeMoves::RPrimDo:
+			destination = rc::moves::FPrimDo;
+			break;
+		case CubeMoves::DMoveDo:
+			destination = rc::moves::DMoveDo;
+			break;
+		case CubeMoves::DPrimDo:
+			destination = rc::moves::DPrimDo;
+			break;
+		case CubeMoves::BPrimDo:
+			destination = rc::moves::RPrimDo;
+			break;
+		case CubeMoves::BMoveDo:
+			destination = rc::moves::RMoveDo;
+			break;
+		}
+		break;
+	case 5: //Blue
+		switch (yourCubeMove)
+		{
+		case CubeMoves::LMoveDo:
+			destination = rc::moves::FPrimDo;
+			break;
+		case CubeMoves::LPrimDo:
+			destination = rc::moves::FMoveDo;
+			break;
+		case CubeMoves::FPrimDo:
+			destination = rc::moves::RMoveDo;
+			break;
+		case CubeMoves::FMoveDo:
+			destination = rc::moves::FMoveDo;
+			break;
+		case CubeMoves::UMoveDo:
+			destination = rc::moves::UMoveDo;
+			break;
+		case CubeMoves::UPrimDo:
+			destination = rc::moves::UPrimDo;
+			break;
+		case CubeMoves::RMoveDo:
+			destination = rc::moves::BMoveDo;
+			break;
+		case CubeMoves::RPrimDo:
+			destination = rc::moves::BPrimDo;
+			break;
+		case CubeMoves::DMoveDo:
+			destination = rc::moves::DMoveDo;
+			break;
+		case CubeMoves::DPrimDo:
+			destination = rc::moves::DPrimDo;
+			break;
+		case CubeMoves::BPrimDo:
+			destination = rc::moves::LPrimDo;
+			break;
+		case CubeMoves::BMoveDo:
+			destination = rc::moves::LMoveDo;
+			break;
+		}
+		break;
+	default:
+		break;
+	}
+
+	destination(matrix1, matrix2, matrix3);
+	return destination;
+}
 //
 //void reverseRubicMoveVectorAdd(std::vector<void(*)(rc::RubicMatrix*, rc::RubicMatrix*, rc::RubicMatrix*)>& vecotrDestination, void(*source)(rc::RubicMatrix*, rc::RubicMatrix*, rc::RubicMatrix*))
 //{
