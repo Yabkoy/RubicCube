@@ -28,6 +28,8 @@ sfmlGrap::mainSFMLVis::mainSFMLVis() : mainSurfaces
 
 	RW->setVerticalSyncEnabled(true);
 
+	
+
 	mainUpdateLoop();
 }
 
